@@ -24,22 +24,46 @@ public class PlantGrowing_Lloyd : MonoBehaviour {
     /// check if the gameObject is watered
     /// </summary>
     bool isWater = false;
-
-	// Use this for initialization
+    /// <summary>
+    /// the stage of the plant
+    /// 0 = seed
+    /// 1= bud
+    /// 2= small flower
+    /// 3 = big flower
+    /// </summary>
+    int stage = 0;
+    /// <summary>
+    /// initiate ani to reference the animator component
+    /// </summary>
 	void Start () {
         ani = GetComponent<Animator>();
 	}
 	
-	// Update is called once per frame
+    /// <summary>
+    /// updating growthEXP
+    /// </summary>
 	void Update () {
-        growthEXP += Time.deltaTime * growthSpeed;
+        if (isWater)
+        {
+            growthEXP += Time.deltaTime * growthSpeed * 1.5f;
+            }
+        else
+        {
+            growthEXP += Time.deltaTime * growthSpeed;
+        }
+       
         if (growthEXP > growthMaxEXP)
         {
+           
             growthEXP = growthMaxEXP;
+            stage = (int)(growthEXP / 33.333f);
+            print(stage);
         }
         else
         {
             ani.SetFloat("growthEXP", growthEXP);
+            stage = (int)(growthEXP / 33.333f);
+            print(stage);
         }
 	}
 }
