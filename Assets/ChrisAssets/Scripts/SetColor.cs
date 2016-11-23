@@ -3,17 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 
 /// <summary>
-/// 
+/// This script changes the color of every pixel in a specifically colored source sprite to match the desired end product instead.
 /// </summary>
 public class SetColor : MonoBehaviour {
 
     /// <summary>
-    /// 
+    /// This is the source sprite, which will be used to generate the final sprite.
     /// </summary>
     public SpriteRenderer source;
 
     /// <summary>
-    /// 
+    /// This is the final destiantion sprite that will be used, so that the original isn't written over.
     /// </summary>
     public Sprite target;
 
@@ -57,8 +57,18 @@ public class SetColor : MonoBehaviour {
     /// </summary>
     public Vector3 White;
 
-    // Use this for initialization
-    void Start () {
+    /// <summary>
+    /// This is the start function, it opens up by doing an inital re-cast of the current sprite.
+    /// </summary>
+    void Start()
+    {
+        RecastPixels();
+    }
+
+    /// <summary>
+    /// This function changes one set sprite into another, and then sets the resulting sprite into the renderer.
+    /// </summary>
+    public void RecastPixels () {
         Sprite doop = source.sprite;
         Texture2D souceText = doop.texture;
         Texture2D targetText = target.texture;
