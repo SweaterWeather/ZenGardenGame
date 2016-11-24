@@ -57,13 +57,13 @@ public class PlantGrowing_Lloyd : MonoBehaviour {
            
             growthEXP = growthMaxEXP;
             stage = (int)(growthEXP / 33.333f);
-            print(stage);
+           // print(stage);
         }
         else
         {
             ani.SetFloat("growthEXP", growthEXP);
             stage = (int)(growthEXP / 33.333f);
-            print(stage);
+
         }
 	}
 }
