@@ -169,6 +169,11 @@ public class Animate : MonoBehaviour {
         currentFrame = 0;
 
         sprites = idleFR;
+
+        Sprite dummy = Instantiate(rend.sprite);
+
+        //rend.sprite = null;
+        rend.sprite = setColor.RecastPixels(dummy);
     }
 
     /// <summary>
@@ -406,10 +411,6 @@ public class Animate : MonoBehaviour {
             if (currentFrame > sprites.Count - 1) currentFrame = 0;
 
             rend.sprite = Instantiate(sprites[currentFrame]);
-            Sprite dummy = Instantiate(rend.sprite);
-            
-            //rend.sprite = null;
-            rend.sprite = setColor.RecastPixels(dummy);
         }
 	}
 }
