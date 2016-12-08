@@ -28,4 +28,14 @@ public class ToolController : MonoBehaviour {
             print("PauseTest");
         }
 	}
+
+    void OnTriggerEnter(Collider other)
+    {
+        print("boom");
+        print(other.gameObject.tag);
+        if (other.gameObject.tag == "Plant")
+        {
+            print("Plant Selected");
+        }
+    }
 }
