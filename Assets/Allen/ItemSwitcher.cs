@@ -30,8 +30,6 @@ public class ItemSwitcher : MonoBehaviour {
                 break;
             case 2: //tool 2 (water can)
                 break;
-            case 3: //toll 3 (axe?)
-                break;
                 //etc...
         }
 

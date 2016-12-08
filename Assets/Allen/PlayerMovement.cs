@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour {
 
 
         
-        print(Mathf.Atan2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal")) * (180/Mathf.PI));
+        //print(Mathf.Atan2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal")) * (180/Mathf.PI));
         transform.rotation = Quaternion.Euler(0, 0, walkDir);
     }
 }
