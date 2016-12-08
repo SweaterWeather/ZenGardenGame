@@ -20,7 +20,8 @@ public class ToolController : MonoBehaviour {
         if (Input.GetButtonDown("Hoe"))
         {
             print("HOE WAS USED");
-            //play hoe animation
+            //play hoe animation  
+            //selectorRotatorScript._dir
         }
 
         if (Input.GetButtonDown("Pause"))
