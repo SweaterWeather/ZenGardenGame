@@ -153,6 +153,8 @@ public class Animate : MonoBehaviour {
     /// </summary>
     public static int animState;
 
+    public int test;
+
     /// <summary>
     /// The renderer used for those sprites.
     /// </summary>
@@ -166,7 +168,7 @@ public class Animate : MonoBehaviour {
         if(sprites.Count > 0 && sprites[0] is Sprite) rend.sprite = sprites[0] as Sprite;
         currentFrame = 0;
 
-        sprites = walkF;
+        sprites = idleFR;
     }
 
     /// <summary>
@@ -294,7 +296,9 @@ public class Animate : MonoBehaviour {
     /// </summary>
     void Update () {
         if (pause) return;
-        if(rend)rend.flipY = false;
+        if(rend)rend.flipX = false;
+
+        animState = test;
 
         switch (animState)
         {
@@ -387,6 +391,7 @@ public class Animate : MonoBehaviour {
                 break;
             //water left
             case 15:
+                rend.flipX = true;
                 sprites = waterL;
                 break;
         }
@@ -395,15 +400,16 @@ public class Animate : MonoBehaviour {
         frameSwitch += Time.deltaTime * frameRate;
         if (frameSwitch >= 1)
         {
+
+            frameSwitch = 0;
+            currentFrame++;
+            if (currentFrame > sprites.Count - 1) currentFrame = 0;
+
             rend.sprite = Instantiate(sprites[currentFrame]);
             Sprite dummy = Instantiate(rend.sprite);
             
             //rend.sprite = null;
             rend.sprite = setColor.RecastPixels(dummy);
-
-            frameSwitch = 0;
-            currentFrame++;
-            if (currentFrame > sprites.Count - 1) currentFrame = 0;
         }
 	}
 }
