@@ -6,16 +6,16 @@ using System.Collections.Generic;
 /// This script changes the color of every pixel in a specifically colored source sprite to match the desired end product instead.
 /// </summary>
 public class SetColor : MonoBehaviour {
-
+    /*
     /// <summary>
     /// This is the source sprite, which will be used to generate the final sprite.
     /// </summary>
-    public SpriteRenderer source;
+    public Sprite source;
 
     /// <summary>
     /// This is the final destiantion sprite that will be used, so that the original isn't written over.
     /// </summary>
-    public Sprite target;
+    public Sprite target;*/
 
     /// <summary>
     /// The target colors for red areas on your spriteswap.
@@ -62,18 +62,28 @@ public class SetColor : MonoBehaviour {
     /// </summary>
     void Start()
     {
-        RecastPixels();
+        //RecastPixels();
+    }
+
+    /// <summary>
+    /// This whole mess only works when done out of the late update.
+    /// </summary>
+    void LateUpdate()
+    {
+        //RecastPixels();
+        //print(source.sprite.texture);
     }
 
     /// <summary>
     /// This function changes one set sprite into another, and then sets the resulting sprite into the renderer.
     /// </summary>
-    public void RecastPixels () {
-        Sprite doop = source.sprite;
-        Texture2D souceText = doop.texture;
+    /// <returns>The generated texture.</returns>
+    public Sprite RecastPixels (Sprite source) {
+        Texture2D sourceText = source.texture;
+        Sprite target = Instantiate(source);
         Texture2D targetText = target.texture;
 
-        Color[] colors = souceText.GetPixels();
+        Color[] colors = sourceText.GetPixels();
 
         for(int i = 0; i < colors.Length; i++)
         {
@@ -97,6 +107,8 @@ public class SetColor : MonoBehaviour {
                 else if (colors[i].b > .5f) mode = 2;
                 else if (colors[i].g > .5f) mode = 1;
                 else if (colors[i].r > .5f) mode = 0;
+
+
 
                 switch (mode)
                 {
@@ -146,6 +158,9 @@ public class SetColor : MonoBehaviour {
         targetText.SetPixels(colors);
         targetText.Apply();
 
-        source.sprite = target;
+        //result.texture = targetText;
+
+        source = target;
+        return target;
 	}
 }

@@ -1,39 +1,39 @@
 fileFormatVersion: 2
-guid: 35ae0a71fc8842e4da956cad208f98be
-timeCreated: 1481154074
+guid: b5e2805b182ade84f9128e29854ef18d
+timeCreated: 1481170794
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: heroBody_0
-    21300002: heroBody_1
-    21300004: heroBody_2
-    21300006: heroBody_3
-    21300008: heroBody_4
-    21300010: heroBody_5
-    21300012: heroBody_6
-    21300014: heroBody_7
-    21300016: heroBody_8
-    21300018: heroBody_9
-    21300020: heroBody_10
-    21300022: heroBody_11
-    21300024: heroBody_12
-    21300026: heroBody_13
-    21300028: heroBody_14
-    21300030: heroBody_15
-    21300032: heroBody_16
-    21300034: heroBody_17
-    21300036: heroBody_18
-    21300038: heroBody_19
-    21300040: heroBody_20
-    21300042: heroBody_21
-    21300044: heroBody_22
-    21300046: heroBody_23
-    21300048: heroBody_24
-    21300050: heroBody_25
+    21300000: heroBodyTarget2_0
+    21300002: heroBodyTarget2_1
+    21300004: heroBodyTarget2_2
+    21300006: heroBodyTarget2_3
+    21300008: heroBodyTarget2_4
+    21300010: heroBodyTarget2_5
+    21300012: heroBodyTarget2_6
+    21300014: heroBodyTarget2_7
+    21300016: heroBodyTarget2_8
+    21300018: heroBodyTarget2_9
+    21300020: heroBodyTarget2_10
+    21300022: heroBodyTarget2_11
+    21300024: heroBodyTarget2_12
+    21300026: heroBodyTarget2_13
+    21300028: heroBodyTarget2_14
+    21300030: heroBodyTarget2_15
+    21300032: heroBodyTarget2_16
+    21300034: heroBodyTarget2_17
+    21300036: heroBodyTarget2_18
+    21300038: heroBodyTarget2_19
+    21300040: heroBodyTarget2_20
+    21300042: heroBodyTarget2_21
+    21300044: heroBodyTarget2_22
+    21300046: heroBodyTarget2_23
+    21300048: heroBodyTarget2_24
+    21300050: heroBodyTarget2_25
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
@@ -79,7 +79,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: heroBody_0
+      name: heroBodyTarget2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -92,7 +92,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: heroBody_1
+      name: heroBodyTarget2_1
       rect:
         serializedVersion: 2
         x: 500
@@ -105,7 +105,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: heroBody_2
+      name: heroBodyTarget2_2
       rect:
         serializedVersion: 2
         x: 1000
@@ -118,7 +118,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: heroBody_3
+      name: heroBodyTarget2_3
       rect:
         serializedVersion: 2
         x: 1500
@@ -131,7 +131,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: heroBody_4
+      name: heroBodyTarget2_4
       rect:
         serializedVersion: 2
         x: 0
@@ -144,7 +144,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: heroBody_5
+      name: heroBodyTarget2_5
       rect:
         serializedVersion: 2
         x: 500
@@ -157,7 +157,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: heroBody_6
+      name: heroBodyTarget2_6
       rect:
         serializedVersion: 2
         x: 1000
@@ -170,7 +170,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: heroBody_7
+      name: heroBodyTarget2_7
       rect:
         serializedVersion: 2
         x: 1500
@@ -183,7 +183,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: heroBody_8
+      name: heroBodyTarget2_8
       rect:
         serializedVersion: 2
         x: 0
@@ -196,7 +196,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: heroBody_9
+      name: heroBodyTarget2_9
       rect:
         serializedVersion: 2
         x: 500
@@ -209,7 +209,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: heroBody_10
+      name: heroBodyTarget2_10
       rect:
         serializedVersion: 2
         x: 1000
@@ -222,7 +222,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: heroBody_11
+      name: heroBodyTarget2_11
       rect:
         serializedVersion: 2
         x: 1500
@@ -235,7 +235,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: heroBody_12
+      name: heroBodyTarget2_12
       rect:
         serializedVersion: 2
         x: 0
@@ -248,7 +248,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: heroBody_13
+      name: heroBodyTarget2_13
       rect:
         serializedVersion: 2
         x: 500
@@ -261,7 +261,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: heroBody_14
+      name: heroBodyTarget2_14
       rect:
         serializedVersion: 2
         x: 1000
@@ -274,7 +274,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: heroBody_15
+      name: heroBodyTarget2_15
       rect:
         serializedVersion: 2
         x: 1500
@@ -287,7 +287,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: heroBody_16
+      name: heroBodyTarget2_16
       rect:
         serializedVersion: 2
         x: 0
@@ -300,7 +300,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: heroBody_17
+      name: heroBodyTarget2_17
       rect:
         serializedVersion: 2
         x: 500
@@ -313,7 +313,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: heroBody_18
+      name: heroBodyTarget2_18
       rect:
         serializedVersion: 2
         x: 1000
@@ -326,7 +326,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: heroBody_19
+      name: heroBodyTarget2_19
       rect:
         serializedVersion: 2
         x: 1500
@@ -339,7 +339,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: heroBody_20
+      name: heroBodyTarget2_20
       rect:
         serializedVersion: 2
         x: 0
@@ -352,7 +352,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: heroBody_21
+      name: heroBodyTarget2_21
       rect:
         serializedVersion: 2
         x: 500
@@ -365,7 +365,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: heroBody_22
+      name: heroBodyTarget2_22
       rect:
         serializedVersion: 2
         x: 1000
@@ -378,7 +378,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: heroBody_23
+      name: heroBodyTarget2_23
       rect:
         serializedVersion: 2
         x: 0
@@ -391,7 +391,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: heroBody_24
+      name: heroBodyTarget2_24
       rect:
         serializedVersion: 2
         x: 500
@@ -404,7 +404,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: heroBody_25
+      name: heroBodyTarget2_25
       rect:
         serializedVersion: 2
         x: 1000
