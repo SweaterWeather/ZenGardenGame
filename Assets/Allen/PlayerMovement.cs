@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour {
             transform.position += new Vector3(0, Input.GetAxis("Vertical") * speedScaler); //UP + DOWN
             transform.position += new Vector3(Input.GetAxis("Horizontal") * speedScaler, 0); //RIGHT + LEFT
 
-            walkDir = Mathf.Atan2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal")) * (180 / Mathf.PI);
+            //walkDir = Mathf.Atan2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal")) * (180 / Mathf.PI);
         }
         
 
@@ -25,6 +25,6 @@ public class PlayerMovement : MonoBehaviour {
 
         
         //print(Mathf.Atan2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal")) * (180/Mathf.PI));
-        transform.rotation = Quaternion.Euler(0, 0, walkDir);
+        //transform.rotation = Quaternion.Euler(0, 0, walkDir);
     }
 }
