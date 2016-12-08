@@ -47,32 +47,36 @@ public class SpawnHouse_Lloyd : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-       /* if (Input.GetButton("SpawnBuilding"))
+        /* if (Input.GetButton("SpawnBuilding"))
+         {
+            makeHouse(house1);
+         }
+         if (!isPlace)
+         {
+
+         }
+
+     */
+        if (usedLocation.Count != spawnPoint.Count)
         {
-           makeHouse(house1);
+            switch (makingHouseStep)
+            {
+                case 1:
+                    if (Input.GetButton("SpawnBuilding"))
+                    {
+                        print("hehehe");
+                        makeHouse(house1);
+                        makingHouseStep = 2;
+                    }
+                    break;
+                case 2:
+                    switchLocation();
+
+                    break;
+
+            }
         }
-        if (!isPlace)
-        {
-
-        }
-
-    */
-        switch (makingHouseStep)
-        {
-            case 1:
-                if (Input.GetButton("SpawnBuilding"))
-                {
-                    print("hehehe");
-                    makeHouse(house1);
-                    makingHouseStep = 2;
-                }
-                break;
-            case 2:
-                switchLocation();
-
-                break;
-
-        }
+       
 
 
 	}
