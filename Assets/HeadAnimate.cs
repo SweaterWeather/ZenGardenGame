@@ -9,6 +9,11 @@ public class HeadAnimate : MonoBehaviour
 {
 
     /// <summary>
+    /// The sprite renderer.
+    /// </summary>
+    public SpriteRenderer rend;
+
+    /// <summary>
     /// This is the head that will load in.
     /// 0: Hat Man
     /// 1: Man
@@ -17,6 +22,11 @@ public class HeadAnimate : MonoBehaviour
     /// 4: Panda
     /// </summary>
     public static int index;
+
+    /// <summary>
+    /// The current frame of the animation.
+    /// </summary>
+    public int currentFrame = 0;
 
     /// <summary>
     /// A list of all sprites.
@@ -73,6 +83,21 @@ public class HeadAnimate : MonoBehaviour
 
     void Update()
     {
-
+        Vector3 pos;
+        switch (currentFrame)
+        {
+            //face FR
+            case 0:
+                rend.sprite = sprites[currentFrame];
+                pos = new Vector3(-5, 2.3f);
+                transform.localPosition = pos;
+                break;
+            //face F
+            case 1:
+                rend.sprite = sprites[currentFrame];
+                pos = new Vector3(-.15f, 2.3f);
+                transform.localPosition = pos;
+                break;
+        }
     }
 }
