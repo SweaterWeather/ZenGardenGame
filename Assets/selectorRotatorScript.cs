@@ -4,7 +4,7 @@ using System.Collections;
 public class selectorRotatorScript : MonoBehaviour {
 
     float walkDir;
-    float _dir;
+    public static float _dir;
 
     // Use this for initialization
     void Start () {
