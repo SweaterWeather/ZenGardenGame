@@ -21,7 +21,7 @@ public class SpawnHouse_Lloyd : MonoBehaviour {
     /// <summary>
     /// what point is already used
     /// </summary>
-    public List<int> usedLocation;
+     List<int> usedLocation;
     /// <summary>
     /// this house is the reference of the house that hasn't place yet
     /// </summary>
@@ -167,7 +167,7 @@ public class SpawnHouse_Lloyd : MonoBehaviour {
                         indexOfSpawnLocation++;
                         if (indexOfSpawnLocation > (spawnPoint.Count - 1))
                         {
-                            print("eeee");
+                          
                             indexOfSpawnLocation = 0;
                         }
                     }
@@ -176,7 +176,7 @@ public class SpawnHouse_Lloyd : MonoBehaviour {
                         indexOfSpawnLocation--;
                         if (indexOfSpawnLocation < 0)
                         {
-                            print("eeee");
+                          
                             indexOfSpawnLocation = (spawnPoint.Count - 1);
                         }
                     }
@@ -210,14 +210,14 @@ public class SpawnHouse_Lloyd : MonoBehaviour {
     /// <summary>
     /// checking if the spawn is overlapping with other spawning point
     /// </summary>
-    /// <param name="spawnLocationIndex"></param>
+    /// <param name="spawnLocationIndex">the location of the house based on the spawning point</param>
     /// <returns>the index of location in spawn point</returns>
     bool checkPoint(int spawnLocationIndex)
     {
         
         for(int i =(usedLocation.Count-1); i >=0; i--)
         {
-            print("eeee");
+           
             if (usedLocation[i] == spawnLocationIndex)
             {
                 return true;

@@ -13,8 +13,18 @@ public class SpawningMap_Lloyd : MonoBehaviour {
     /// </summary>
     public float tileSpacing = 1f;
 
-
+    /// <summary>
+    /// grass sprite
+    /// </summary>
     public GameObject grass;
+    /// <summary>
+    /// dirt sprite
+    /// </summary>
+    public GameObject dirt;
+    /// <summary>
+    /// stone sprite
+    /// </summary>
+    public GameObject stone;
 	void Start () {
         createMap();
 	}
@@ -39,11 +49,24 @@ public class SpawningMap_Lloyd : MonoBehaviour {
                 {
                     Instantiate(grass, makeTileLocation(x, y), Quaternion.identity);
                 }
+                if (gridMap[y, x] == 2)
+                {
+                    Instantiate(dirt, makeTileLocation(x, y), Quaternion.identity);
+                }
+                if (gridMap[y, x] == 3)
+                {
+                    Instantiate(stone, makeTileLocation(x, y), Quaternion.identity);
+                }
             }
         }
         
     }
-
+    /// <summary>
+    /// placing the time
+    /// </summary>
+    /// <param name="x">x direction of the tile</param>
+    /// <param name="y">y direction of the tile</param>
+    /// <returns></returns>
     Vector3 makeTileLocation(int x, int y)
     {
         float pointX = x *tileSpacing;
