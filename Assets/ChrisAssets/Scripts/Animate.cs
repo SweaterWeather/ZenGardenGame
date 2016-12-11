@@ -8,6 +8,11 @@ using System.Collections.Generic;
 public class Animate : MonoBehaviour {
 
     /// <summary>
+    /// The head, so it can animate as well.
+    /// </summary>
+    public HeadAnimate head;
+
+    /// <summary>
     /// This is the color swapper tool.
     /// </summary>
     public SetColor setColor;
@@ -16,6 +21,11 @@ public class Animate : MonoBehaviour {
     /// The framerate at which this object will animate.
     /// </summary>
     public float frameRate = 24;
+
+    /// <summary>
+    /// A counter of how many frames of animation have passed.
+    /// </summary>
+    int framesPassed = 0;
 
     /// <summary>
     /// A quick pause to make the animation stop.
@@ -31,6 +41,12 @@ public class Animate : MonoBehaviour {
     /// The frame we are currently on.
     /// </summary>
     int currentFrame;
+
+    /// <summary>
+    /// THe frame immediately before this one.
+    /// </summary>
+    int prevCurFrame;
+
 
     /// <summary>
     /// A list of all sprites to loop through.
@@ -303,101 +319,190 @@ public class Animate : MonoBehaviour {
         if (pause) return;
         if(rend)rend.flipX = false;
 
-        //animState = test;
+        animState = test;
 
         switch (animState)
         {
+            //nothing
             case 0:
                 break;
-                //stop moving or performing other such actions
+            //stop moving or performing other such actions
             case 1:
+                framesPassed = 0;
+                head.bobbing.pause = true;
                 //face backwards when stopping
                 if (sprites == walkB || sprites == hoeB || sprites == waterB)
                 {
                     sprites = idleB;
+                    head.currentFrame = 4;
                 }
                 //face forwards when stopping
                 else if (sprites == walkF || sprites == hoeF || sprites == waterF)
                 {
                     sprites = idleF;
+                    head.currentFrame = 1;
                 }
                 //face frontright when stopping
                 else if (sprites == walkFR || sprites == hoeR || sprites == waterR)
                 {
                     sprites = idleFR;
+                    head.currentFrame = 0;
                 }
                 //face frontleft when stopping
                 else if (sprites == walkFL || sprites == hoeL || sprites == waterL)
                 {
+                    head.currentFrame = 2;
                     sprites = idleFL;
                 }
                 //face backright when stopping
                 else if (sprites == walkBR)
                 {
                     sprites = idleBR;
+                    head.currentFrame = 5;
                 }
                 //face backleft when stopping
                 else if (sprites == walkBL)
                 {
                     sprites = idleBL;
+                    head.currentFrame = 3;
                 }
                 break;
             //walk backward
             case 2:
+                head.currentFrame = 4;
+                head.bobbing.pause = false;
                 sprites = walkB;
                 break;
             //walk forward
             case 3:
+                head.currentFrame = 1;
+                head.bobbing.pause = false;
                 sprites = walkF;
                 break;
             //walk backwardright
             case 4:
+                head.currentFrame = 5;
+                head.bobbing.pause = false;
                 sprites = walkBR;
                 break;
             //walk backwardleft
             case 5:
+                head.currentFrame = 3;
+                head.bobbing.pause = false;
                 sprites = walkBL;
                 break;
             //walk forwardleft
             case 6:
+                head.currentFrame = 2;
+                head.bobbing.pause = false;
                 sprites = walkFL;
                 break;
-            //walk backwardright
+            //walk forwardright
             case 7:
+                head.currentFrame = 0;
+                head.bobbing.pause = false;
                 sprites = walkFR;
                 break;
             //hoe backward
             case 8:
+                head.currentFrame = 12;
                 sprites = hoeB;
+                head.bobbing.pause = true;
+
+                if (framesPassed >= 3)
+                {
+                    head.currentFrame = 13;
+                }
+                if (framesPassed >= 5)
+                {
+                    Animate.Stop();
+                    head.currentFrame = 4;
+                    framesPassed = 0;
+                }
                 break;
             //hoe forward
             case 9:
+                head.currentFrame = 8;
                 sprites = hoeF;
+                head.bobbing.pause = true;
+
+                if (framesPassed >= 3)
+                {
+                    head.currentFrame = 9;
+                }
+                if (framesPassed >= 5)
+                {
+                    Animate.Stop();
+                    head.currentFrame = 1;
+                    framesPassed = 0;
+                }
                 break;
             //hoe right
             case 10:
+                head.currentFrame = 6;
                 sprites = hoeR;
+                head.bobbing.pause = true;
+
+                if (framesPassed >= 3)
+                {
+                    head.currentFrame = 7;
+                }
+                if (framesPassed >= 5)
+                {
+                    Animate.Stop();
+                    head.currentFrame = 0;
+                    framesPassed = 0;
+                }
                 break;
             //hoe left
             case 11:
+                head.currentFrame = 10;
                 sprites = hoeL;
+                head.bobbing.pause = true;
+
+                if (framesPassed >= 3)
+                {
+                    head.currentFrame = 11;
+                }
+                if (framesPassed >= 5)
+                {
+                    Animate.Stop();
+                    head.currentFrame = 2;
+                    framesPassed = 0;
+                }
                 break;
             //water backward
             case 12:
+                head.currentFrame = 17;
                 sprites = waterB;
+                head.bobbing.pause = true;
+
+                if (framesPassed > 5) Animate.Stop();
                 break;
             //water forward
             case 13:
+                head.currentFrame = 15;
                 sprites = waterF;
+                head.bobbing.pause = true;
+
+                if (framesPassed > 5) Animate.Stop();
                 break;
             //weater right
             case 14:
+                head.currentFrame = 14;
                 sprites = waterR;
+                head.bobbing.pause = true;
+
+                if (framesPassed > 5) Animate.Stop();
                 break;
             //water left
             case 15:
+                head.currentFrame = 16;
                 rend.flipX = true;
                 sprites = waterL;
+                head.bobbing.pause = true;
+
+                if (framesPassed > 5) Animate.Stop();
                 break;
         }
 
@@ -405,12 +510,16 @@ public class Animate : MonoBehaviour {
         frameSwitch += Time.deltaTime * frameRate;
         if (frameSwitch >= 1)
         {
+            if (prevCurFrame != animState) framesPassed = 0;
 
             frameSwitch = 0;
             currentFrame++;
+            framesPassed++;
+
             if (currentFrame > sprites.Count - 1) currentFrame = 0;
 
             rend.sprite = Instantiate(sprites[currentFrame]);
+            prevCurFrame = animState;
         }
-	}
+    }
 }

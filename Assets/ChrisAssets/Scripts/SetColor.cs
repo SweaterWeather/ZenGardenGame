@@ -62,7 +62,7 @@ public class SetColor : MonoBehaviour {
     /// </summary>
     void Start()
     {
-        //RecastPixels();
+        RecastPixels(GetComponent<SpriteRenderer>().sprite);
     }
 
     /// <summary>
