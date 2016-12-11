@@ -106,115 +106,116 @@ public class HeadAnimate : MonoBehaviour
 
     void Update()
     {
+       
         Vector3 pos;
         switch (currentFrame)
         {
             //face FR
             case 0:
                 rend.sprite = sprites[currentFrame];
-                pos = new Vector3(-.5f, transform.position.y);
+                pos = new Vector3(-.5f, transform.localPosition.y);
                 transform.localPosition = pos;
                 break;
             //face F
             case 1:
                 rend.sprite = sprites[currentFrame];
-                pos = new Vector3(-.15f, transform.position.y);
+                pos = new Vector3(-.15f, transform.localPosition.y);
                 transform.localPosition = pos;
                 break;
             //face FL
             case 2:
                 rend.sprite = sprites[currentFrame];
-                pos = new Vector3(.5f, transform.position.y);
+                pos = new Vector3(.5f, transform.localPosition.y);
                 transform.localPosition = pos;
                 break;
             //face BL
             case 3:
                 rend.sprite = sprites[currentFrame];
-                pos = new Vector3(-.5f, transform.position.y);
+                pos = new Vector3(-.5f, transform.localPosition.y);
                 transform.localPosition = pos;
                 break;
             //face B
             case 4:
                 rend.sprite = sprites[currentFrame];
-                pos = new Vector3(-.15f, transform.position.y);
+                pos = new Vector3(-.15f, transform.localPosition.y);
                 transform.localPosition = pos;
                 break;
             //face BR
             case 5:
                 rend.sprite = sprites[currentFrame];
-                pos = new Vector3(.5f, transform.position.y);
+                pos = new Vector3(.5f, transform.localPosition.y);
                 transform.localPosition = pos;
                 break;
             //Hoe R1:
             case 6:
                 rend.sprite = sprites[5];
-                pos = new Vector3(.5f, transform.position.y);
+                pos = new Vector3(.5f, transform.localPosition.y);
                 transform.localPosition = pos;
                 break;
             //Hoe R2:
             case 7:
                 rend.sprite = sprites[0];
-                pos = new Vector3(-1f, transform.position.y);
+                pos = new Vector3(-1f, transform.localPosition.y);
                 transform.localPosition = pos;
                 break;
             //Hoe F1:
             case 8:
                 rend.sprite = sprites[1];
-                pos = new Vector3(.3f, transform.position.y);
+                pos = new Vector3(.3f, transform.localPosition.y);
                 transform.localPosition = pos;
                 break;
             //Hoe F2:
             case 9:
                 rend.sprite = sprites[1];
-                pos = new Vector3(-.5f, transform.position.y);
+                pos = new Vector3(-.5f, transform.localPosition.y);
                 transform.localPosition = pos;
                 break;
             //Hoe L1:
             case 10:
                 rend.sprite = sprites[3];
-                pos = new Vector3(-.5f, transform.position.y);
+                pos = new Vector3(-.5f, transform.localPosition.y);
                 transform.localPosition = pos;
                 break;
             //Hoe L2:
             case 11:
                 rend.sprite = sprites[2];
-                pos = new Vector3(1f, transform.position.y);
+                pos = new Vector3(1f, transform.localPosition.y);
                 transform.localPosition = pos;
                 break;
             //Hoe B1
             case 12:
                 rend.sprite = sprites[5];
-                pos = new Vector3(-.5f, transform.position.y);
+                pos = new Vector3(-.5f, transform.localPosition.y);
                 transform.localPosition = pos;
                 break;
             //Hoe B2
             case 13:
                 rend.sprite = sprites[4];
-                pos = new Vector3(.45f, transform.position.y);
+                pos = new Vector3(.45f, transform.localPosition.y);
                 transform.localPosition = pos;
                 break;
             //Water R
             case 14:
                 rend.sprite = sprites[0];
-                pos = new Vector3(-.8f, transform.position.y);
+                pos = new Vector3(-.8f, transform.localPosition.y);
                 transform.localPosition = pos;
                 break;
             //Water F
             case 15:
                 rend.sprite = sprites[1];
-                pos = new Vector3(-.1f, transform.position.y);
+                pos = new Vector3(-.1f, transform.localPosition.y);
                 transform.localPosition = pos;
                 break;
             //Water L
             case 16:
                 rend.sprite = sprites[2];
-                pos = new Vector3(.7f, transform.position.y);
+                pos = new Vector3(.7f, transform.localPosition.y);
                 transform.localPosition = pos;
                 break;
             //Water L
             case 17:
                 rend.sprite = sprites[4];
-                pos = new Vector3(-.1f, transform.position.y);
+                pos = new Vector3(-.1f, transform.localPosition.y);
                 transform.localPosition = pos;
                 break;
         }
