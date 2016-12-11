@@ -113,6 +113,7 @@ public class HeadAnimate : MonoBehaviour
 
     void Update()
     {
+       
         Vector3 pos;
         switch (currentFrame)
         {

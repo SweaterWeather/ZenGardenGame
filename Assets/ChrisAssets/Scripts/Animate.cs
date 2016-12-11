@@ -333,7 +333,7 @@ public class Animate : MonoBehaviour {
         if (pause) return;
         if(rend)rend.flipX = false;
 
-        animState = test;
+        //animState = test; by allen
 
         switch (animState)
         {
