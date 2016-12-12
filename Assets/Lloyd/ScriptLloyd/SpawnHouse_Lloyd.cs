@@ -23,6 +23,17 @@ public class SpawnHouse_Lloyd : MonoBehaviour {
     /// </summary>
      List<int> usedLocation;
     /// <summary>
+    /// return used location
+    /// </summary>
+    public List<int> getUsedLocation
+    {
+        get
+        {
+            return usedLocation;
+        }
+    }
+    
+    /// <summary>
     /// this house is the reference of the house that hasn't place yet
     /// </summary>
     GameObject houseRef;
