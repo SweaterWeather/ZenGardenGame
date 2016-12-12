@@ -36,6 +36,7 @@ public class PlantGrowing_Lloyd : MonoBehaviour {
     /// initiate ani to reference the animator component
     /// </summary>
 	void Start () {
+       
         ani = GetComponent<Animator>();
 	}
 	
