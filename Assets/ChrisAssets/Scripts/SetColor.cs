@@ -107,8 +107,8 @@ public class SetColor : MonoBehaviour {
     /// <returns>The generated texture.</returns>
     public SpriteRenderer RecastPixels (SpriteRenderer source) {
         Texture2D sourceText = source.sprite.texture;
-        //Sprite target = Instantiate(source);
-        //Texture2D targetText = target.texture;
+        Sprite target = Instantiate(source.sprite);
+        Texture2D targetText = target.texture;
 
         Color[] colors = sourceText.GetPixels();
 
@@ -182,7 +182,7 @@ public class SetColor : MonoBehaviour {
                 }
             }
         }
-        Texture2D targetText = new Texture2D(sourceText.width, sourceText.height, TextureFormat.ARGB32, false);
+        //Texture2D targetText = new Texture2D(sourceText.width, sourceText.height, TextureFormat.ARGB32, false);
 
         targetText.SetPixels(colors);
         targetText.Apply();
