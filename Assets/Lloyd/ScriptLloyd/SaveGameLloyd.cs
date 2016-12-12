@@ -4,14 +4,30 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+/// <summary>
+/// SAve game that is in the main camera to save the location of the spawned house
+/// </summary>
 public class SaveGameLloyd : MonoBehaviour {
+    /// <summary>
+    /// save structure location
+    /// </summary>
     public static string SAVEGAMEDATALOCATION= "Assets/Lloyd/Save_GameLloyd/";
+    /// <summary>
+    /// save slot name
+    /// </summary>
     public static string SAVESLOT = "SAVESLOT.txt";
-
+    /// <summary>
+    /// List of building spawn points
+    /// </summary>
+    List<GameObject> savedSpawnedPoint;
+    /// <summary>
+    /// List of the point that is used
+    /// </summary>
+    List<int> savedUsedPoint;
     
 	
 	void Start () {
-	
+        savedSpawnedPoint = GetComponent<SpawnHouse_Lloyd>().spawnPoint;
 	}
 	
 	// Update is called once per frame
@@ -26,7 +42,7 @@ public class SaveGameLloyd : MonoBehaviour {
            
 	}
 
-    public void SaveSlot1()
+    public static void SaveSlot1()
     {
         LoadingSave ls = new LoadingSave("papaJohn");
         
@@ -49,7 +65,7 @@ public class SaveGameLloyd : MonoBehaviour {
             print("Save");
         }   
     }
-    public void LoadSlot1()
+    public static void LoadSlot1()
     {
         FileStream fs = null;
         try
