@@ -15,11 +15,11 @@ public class Animate : MonoBehaviour {
     /// <summary>
     /// The color of the body.
     /// </summary>
-    public SetColor bodyColor;
+    public SetColor2 bodyColor;
     /// <summary>
     /// The color of the head.
     /// </summary>
-    public SetColor headColor;
+    public SetColor2 headColor;
 
     /// <summary>
     /// The head, so it can animate as well.
@@ -533,8 +533,9 @@ public class Animate : MonoBehaviour {
             if (currentFrame > sprites.Count - 1) currentFrame = 0;
 
             rend.sprite = sprites[currentFrame];
-            //bodyColor.RecastPixels(rend);
-            //headColor.RecastPixels(headRend);
+            //bodyColor.RecastPixels();
+            //headColor.RecastPixels();
+
             prevCurFrame = animState;
         }
     }

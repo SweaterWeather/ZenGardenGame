@@ -7,7 +7,7 @@ using System.Collections.Generic;
 /// </summary>
 public class SetColor2 : MonoBehaviour
 {
-    /*
+    
     /// <summary>
     /// This is the source sprite, which will be used to generate the final sprite.
     /// </summary>
@@ -16,7 +16,7 @@ public class SetColor2 : MonoBehaviour
     /// <summary>
     /// This is the final destiantion sprite that will be used, so that the original isn't written over.
     /// </summary>
-    public Sprite target;*/
+    public Sprite target;
 
     /// <summary>
     /// The target colors for red areas on your spriteswap.
@@ -91,7 +91,7 @@ public class SetColor2 : MonoBehaviour
             Black = ColorController.blackChannelBody;
             White = ColorController.whiteChannelBody;
         }
-        RecastPixels(GetComponent<SpriteRenderer>().sprite);
+        RecastPixels();
     }
 
     /// <summary>
@@ -107,13 +107,14 @@ public class SetColor2 : MonoBehaviour
     /// This function changes one set sprite into another, and then sets the resulting sprite into the renderer.
     /// </summary>
     /// <returns>The generated texture.</returns>
-    public Sprite RecastPixels(Sprite source)
+    public void RecastPixels()
     {
         Texture2D sourceText = source.texture;
         Sprite target = Instantiate(source);
         Texture2D targetText = target.texture;
 
         Color[] colors = sourceText.GetPixels();
+        //print(colors.Length);
 
         for (int i = 0; i < colors.Length; i++)
         {
@@ -138,7 +139,7 @@ public class SetColor2 : MonoBehaviour
                 else if (colors[i].g > .5f) mode = 1;
                 else if (colors[i].r > .5f) mode = 0;
 
-
+                
 
                 switch (mode)
                 {
@@ -185,13 +186,12 @@ public class SetColor2 : MonoBehaviour
                 }
             }
         }
-        //targetText = new Texture2D(sourceText.width, sourceText.height, TextureFormat.ARGB32, false);
-        
-        targetText.SetPixels(colors);
-        targetText.Apply();
+        sourceText = new Texture2D(sourceText.width, sourceText.height, TextureFormat.ARGB32, false);
+
+        sourceText.SetPixels(colors);
+        sourceText.Apply();
 
         //result.texture = targetText;
         source = target;
-        return source;
     }
 }
