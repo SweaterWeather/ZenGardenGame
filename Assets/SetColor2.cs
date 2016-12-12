@@ -5,7 +5,8 @@ using System.Collections.Generic;
 /// <summary>
 /// This script changes the color of every pixel in a specifically colored source sprite to match the desired end product instead.
 /// </summary>
-public class SetColor : MonoBehaviour {
+public class SetColor2 : MonoBehaviour
+{
     /*
     /// <summary>
     /// This is the source sprite, which will be used to generate the final sprite.
@@ -78,7 +79,8 @@ public class SetColor : MonoBehaviour {
             Yellow = ColorController.yellowChannelHead;
             Black = ColorController.blackChannelHead;
             White = ColorController.whiteChannelHead;
-        }else
+        }
+        else
         {
             Red = ColorController.redChannelBody;
             Green = ColorController.greenChannelBody;
@@ -89,7 +91,7 @@ public class SetColor : MonoBehaviour {
             Black = ColorController.blackChannelBody;
             White = ColorController.whiteChannelBody;
         }
-        RecastPixels(GetComponent<SpriteRenderer>());
+        RecastPixels(GetComponent<SpriteRenderer>().sprite);
     }
 
     /// <summary>
@@ -105,14 +107,15 @@ public class SetColor : MonoBehaviour {
     /// This function changes one set sprite into another, and then sets the resulting sprite into the renderer.
     /// </summary>
     /// <returns>The generated texture.</returns>
-    public SpriteRenderer RecastPixels (SpriteRenderer source) {
-        Texture2D sourceText = source.sprite.texture;
-        //Sprite target = Instantiate(source);
-        //Texture2D targetText = target.texture;
+    public Sprite RecastPixels(Sprite source)
+    {
+        Texture2D sourceText = source.texture;
+        Sprite target = Instantiate(source);
+        Texture2D targetText = target.texture;
 
         Color[] colors = sourceText.GetPixels();
 
-        for(int i = 0; i < colors.Length; i++)
+        for (int i = 0; i < colors.Length; i++)
         {
             //The color being swapped out.
             //0 : red
@@ -124,7 +127,7 @@ public class SetColor : MonoBehaviour {
             //6 : black
             //7 : white
             int mode = 0;
-            if(colors[i].a > 0)
+            if (colors[i].a > 0)
             {
                 if (colors[i].r > .5f && colors[i].g > .5f && colors[i].b > .5f) mode = 7;
                 else if (colors[i].r < .5f && colors[i].g < .5f && colors[i].b < .5f) mode = 6;
@@ -182,13 +185,13 @@ public class SetColor : MonoBehaviour {
                 }
             }
         }
-        Texture2D targetText = new Texture2D(sourceText.width, sourceText.height, TextureFormat.ARGB32, false);
-
+        //targetText = new Texture2D(sourceText.width, sourceText.height, TextureFormat.ARGB32, false);
+        
         targetText.SetPixels(colors);
         targetText.Apply();
 
         //result.texture = targetText;
-        source.sprite = Sprite.Create(targetText, source.sprite.rect, new Vector2(.5f, .5f));
+        source = target;
         return source;
-	}
+    }
 }

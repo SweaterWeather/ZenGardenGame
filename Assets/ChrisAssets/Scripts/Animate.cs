@@ -8,6 +8,20 @@ using System.Collections.Generic;
 public class Animate : MonoBehaviour {
 
     /// <summary>
+    /// The renderer for the head.
+    /// </summary>
+    public SpriteRenderer headRend;
+
+    /// <summary>
+    /// The color of the body.
+    /// </summary>
+    public SetColor bodyColor;
+    /// <summary>
+    /// The color of the head.
+    /// </summary>
+    public SetColor headColor;
+
+    /// <summary>
     /// The head, so it can animate as well.
     /// </summary>
     public HeadAnimate head;
@@ -186,10 +200,10 @@ public class Animate : MonoBehaviour {
 
         sprites = idleFR;
 
-        Sprite dummy = Instantiate(rend.sprite);
+        //Sprite dummy = Instantiate(rend.sprite);
 
         //rend.sprite = null;
-        rend.sprite = setColor.RecastPixels(dummy);
+        //rend.sprite = setColor.RecastPixels(dummy);
     }
 
     /// <summary>
@@ -518,7 +532,9 @@ public class Animate : MonoBehaviour {
 
             if (currentFrame > sprites.Count - 1) currentFrame = 0;
 
-            rend.sprite = Instantiate(sprites[currentFrame]);
+            rend.sprite = sprites[currentFrame];
+            //bodyColor.RecastPixels(rend);
+            //headColor.RecastPixels(headRend);
             prevCurFrame = animState;
         }
     }

@@ -123,6 +123,6 @@ public class ColorController : MonoBehaviour
         body.Black = blackChannelBody;
         body.White = whiteChannelBody;
 
-        HeadAnimate.index = headType;
+        //HeadAnimate.index = headType;
 	}
 }
