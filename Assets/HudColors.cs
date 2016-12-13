@@ -468,4 +468,11 @@ public class HudColors : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
+
+    public void ChangeHead(Dropdown drop)
+    {
+        HeadAnimate.index = drop.value;
+        Refresh();
+    }
 }

@@ -90,18 +90,23 @@ public class HeadAnimate : MonoBehaviour
         {
             case 0:
                 sprites = hatMan;
+                GetComponent<SpriteRenderer>().sprite = hatMan[0];
                 break;
             case 1:
                 sprites = man;
+                GetComponent<SpriteRenderer>().sprite = man[0];
                 break;
             case 2:
                 sprites = youngWoman;
+                GetComponent<SpriteRenderer>().sprite = youngWoman[0];
                 break;
             case 3:
                 sprites = oldWoman;
+                GetComponent<SpriteRenderer>().sprite = oldWoman[0];
                 break;
             case 4:
                 sprites = panda;
+                GetComponent<SpriteRenderer>().sprite = panda[0];
                 break;
         }
     }
