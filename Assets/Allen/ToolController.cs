@@ -3,12 +3,11 @@ using System.Collections;
 
 public class ToolController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+
 	
-	}
-	
-	// Update is called once per frame
+	/// <summary>
+    /// Update is ran once per frame. This is constantly checking to see if the tool's button is pressed.
+    /// </summary>
 	void Update () {
 
         
@@ -35,13 +34,15 @@ public class ToolController : MonoBehaviour {
                 Animate.HoeRight();
             }
         }
-
+        
+        
+        
         if (Input.GetButtonDown("Pause"))
         {
             print("PauseTest");
         }
 	}
-
+    
     void OnTriggerEnter(Collider other)
     {
         print("boom");
