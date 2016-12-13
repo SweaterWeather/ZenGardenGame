@@ -11,9 +11,10 @@ public class ToolController : MonoBehaviour {
 	void Update () {
 
         
-        if (Input.GetButtonDown("WaterCan"))
+        if (Input.GetButtonDown("WaterCan")) //Q
         {
             print("WATER CAN WAS USED");
+            //play hoe animation    
             if (selectorRotatorScript._dir >= 45 && selectorRotatorScript._dir < 135)
             {
                 Animate.WaterBackward();
@@ -32,10 +33,10 @@ public class ToolController : MonoBehaviour {
             }
             //play watercan animation
         }
-        if (Input.GetButtonDown("Hoe"))
+        if (Input.GetButtonDown("Hoe")) //E
         {
             print("HOE WAS USED");
-            //play hoe animation              
+                      
             if(selectorRotatorScript._dir >= 45 && selectorRotatorScript._dir < 135)
             {
                 Animate.HoeBackward();
@@ -53,7 +54,7 @@ public class ToolController : MonoBehaviour {
         
         
         
-        if (Input.GetButtonDown("Pause"))
+        if (Input.GetButtonDown("Pause")) //p
         {
             print("PauseTest");
         }
