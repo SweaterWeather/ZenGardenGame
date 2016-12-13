@@ -54,11 +54,19 @@ public class ToolController : MonoBehaviour {
         
         
         
-        if (Input.GetButtonDown("Pause")) //p
+        if (Input.GetButtonDown("Pause"))
         {
             print("PauseTest");
         }
 	}
     
-    
+    void OnTriggerEnter(Collider other)
+    {
+        print("boom");
+        print(other.gameObject.tag);
+        if (other.gameObject.tag == "Plant")
+        {
+            print("Plant Selected");
+        }
+    }
 }
