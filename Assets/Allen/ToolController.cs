@@ -14,7 +14,6 @@ public class ToolController : MonoBehaviour {
         if (Input.GetButtonDown("WaterCan")) //Q
         {
             print("WATER CAN WAS USED");
-            //play hoe animation    
             if (selectorRotatorScript._dir >= 45 && selectorRotatorScript._dir < 135)
             {
                 Animate.WaterBackward();
@@ -39,13 +38,13 @@ public class ToolController : MonoBehaviour {
             //play hoe animation              
             if(selectorRotatorScript._dir >= 45 && selectorRotatorScript._dir < 135)
             {
-                Animate.HoeForwards();
+                Animate.HoeBackward();
             } else if (selectorRotatorScript._dir >= 135 && selectorRotatorScript._dir < 225)
             {
                 Animate.HoeLeft();
             } else if (selectorRotatorScript._dir >= 225 && selectorRotatorScript._dir < 315)
             {
-                Animate.HoeBackward();
+                Animate.HoeForwards();
             } else if (selectorRotatorScript._dir >= 315 || selectorRotatorScript._dir >= 0)
             {
                 Animate.HoeRight();
@@ -60,13 +59,5 @@ public class ToolController : MonoBehaviour {
         }
 	}
     
-    void OnTriggerEnter(Collider other)
-    {
-        print("boom");
-        print(other.gameObject.tag);
-        if (other.gameObject.tag == "Plant")
-        {
-            print("Plant Selected");
-        }
-    }
+    
 }

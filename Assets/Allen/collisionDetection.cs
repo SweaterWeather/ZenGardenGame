@@ -3,9 +3,15 @@ using System.Collections;
 
 public class collisionDetection : MonoBehaviour {
 
-    bool selected = false;
+	// Use this for initialization
+	void Start () {
 	
+	}
 	
+	// Update is called once per frame
+	void Update () {
+	
+	}
 
     void OnTriggerEnter(Collider other)
     {
@@ -13,20 +19,7 @@ public class collisionDetection : MonoBehaviour {
         {
             //I AM SELECTED
             print("I AM SELECTED BRUHHH");
-            this.gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().enabled = true;
-            selected = true;
         }
         
-    }
-    void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Selector")
-        {
-            //I AM SELECTED
-            print("DONT LEAVE ME BRUHHH, COME BACK!");
-            this.gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().enabled = false;
-            selected = false;
-        }
-
     }
 }
