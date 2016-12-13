@@ -9,96 +9,198 @@ using System.IO;
 /// </summary>
 public class SaveGameLloyd : MonoBehaviour {
     /// <summary>
+    /// switch between loading and saving
+    /// </summary>
+   public bool isLoading = false;
+    /// <summary>
+    /// reference to game object house
+    /// </summary>
+    public GameObject house1;
+    /// <summary>
+    /// reference to the class itself as a static object
+    /// </summary>
+    public static SaveGameLloyd saveGameLloyd;
+    /// <summary>
     /// save structure location
     /// </summary>
     public static string SAVEGAMEDATALOCATION= "Assets/Lloyd/Save_GameLloyd/";
     /// <summary>
     /// save slot name
     /// </summary>
-    public static string SAVESLOT = "SAVESLOT.txt";
+    public  static string SAVESLOT = "SAVESLOT.txt";
     /// <summary>
     /// List of building spawn points
     /// </summary>
     List<GameObject> savedSpawnedPoint;
     /// <summary>
+    /// List of spawn point x position;
+    /// </summary>
+    List<float> spawnPosX;
+    /// <summary>
+    /// List of spawn point in y position
+    /// </summary>
+    List<float> spawnPosY;
+    /// <summary>
     /// List of the point that is used
     /// </summary>
     List<int> savedUsedPoint;
+    /// <summary>
+    /// initiate the reference for savedSpawnedPoint and savedUsedPoint
+    /// </summary>
     
 	
 	void Start () {
+        saveGameLloyd = this;
         savedSpawnedPoint = GetComponent<SpawnHouse_Lloyd>().spawnPoint;
-	}
+        savedUsedPoint = GetComponent<SpawnHouse_Lloyd>().getUsedLocation;
+        spawnPosX = new List<float>();
+        spawnPosY = new List<float>();
+      
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
-      if(Input.GetButtonDown("Horizontal"))
+      if(Input.GetButtonDown("SaveAndLoad"))
         {
-            SaveSlot1();
+            if (!isLoading) addInPosition();
+            if (isLoading) { LoadSlot1(); }
+            else { SaveSlot1(); }
+           
         }
 
         
 
            
 	}
-
-    public static void SaveSlot1()
+    /// <summary>
+    /// saving the game
+    /// </summary>
+    public void SaveSlot1()
     {
-        LoadingSave ls = new LoadingSave("papaJohn");
-        
+        LoadingSave ls =new LoadingSave(spawnPosX, spawnPosY,savedUsedPoint);
+        print("Save " + spawnPosX[0] + " " + spawnPosY[0]);
         FileStream fs = null;
         try
         {
-            fs = new FileStream(SAVEGAMEDATALOCATION+SAVESLOT, FileMode.Create);
+            fs = new FileStream(SAVEGAMEDATALOCATION + SAVESLOT, FileMode.Create);
             BinaryFormatter bf = new BinaryFormatter();
-            bf.Serialize(fs, ls);
+           bf.Serialize(fs, ls);
             fs.Close();
             print("Save");
         }
         catch(Exception e)
         {
-
+            print(e);
         }
         finally
         {
             if (fs != null) fs.Close();
-            print("Save");
+            
         }   
     }
-    public static void LoadSlot1()
+
+    /// <summary>
+    /// loading gamedata
+    /// </summary>
+    public void LoadSlot1()
     {
+       
         FileStream fs = null;
         try
-        { BinaryFormatter bf = new BinaryFormatter();
+        {
+            
             fs = new FileStream(SAVEGAMEDATALOCATION + SAVESLOT, FileMode.Open);
+            BinaryFormatter bf = new BinaryFormatter();
             LoadingSave ls = (LoadingSave)bf.Deserialize(fs);
-            print(ls.cheese);
+           
+            spawnPosX = ls.spawnPosX;
+            spawnPosY = ls.spawnPosY;
+            savedUsedPoint = ls.loadingUsedPoint;
+           recreatingBuilding(spawnPosX, spawnPosY, savedUsedPoint);
+            print("Load " + spawnPosX[0] + " " + spawnPosY[0]);
+            print("Load");
             fs.Close();
         }
         catch(Exception e)
         {
-
+            print(e);
         }
         finally
         {
-            fs.Close();
+            if (fs != null) fs.Close();
+
         }
     }
+    /// <summary>
+    /// bspawning building to the saved location
+    /// </summary>
+    /// <param name="spawnPoint"></param>
+    /// <param name="usedPoint"></param>
 
-
-
+    public void recreatingBuilding(List<float> posX, List<float>posY, List<int> usedPoint)
+    {
+        print(usedPoint.Count);
+        for (int i=0; i<(usedPoint.Count);i++)
+        {
+            print("recreatingBuilding");
+            float x =posX[i];
+            float y =posY[i];
+            float z = 1;
+            Vector3 location = new Vector3(x, y, z);
+            Instantiate(house1, location, Quaternion.identity);
+        }
+    }
+    /// <summary>
+    /// convert gameObject position into a list
+    /// </summary>
+    void addInPosition()
+    {
+        for (int i = 0; i < (savedUsedPoint.Count); i++)
+        {
+            spawnPosX.Add(savedSpawnedPoint[savedUsedPoint[i]].transform.position.x);
+            spawnPosY.Add(savedSpawnedPoint[savedUsedPoint[i]].transform.position.y);
+        }
+    }
 
 }
 
 [Serializable]
 class LoadingSave
-{
-    List<GameObject> loadingSpawnLocation;
-    List<int> loadingUsedPoint;
+{/// <summary>
+/// saving the game into data
+/// </summary>
+   public List<GameObject> loadingSpawnLocation;
+    /// <summary>
+    /// saving spawn location in x direction
+    /// </summary>
+    public List<float> spawnPosX;
+    /// <summary>
+    /// saving spawn loaction in y direction
+    /// </summary>
+    public List<float> spawnPosY;
+    /// <summary>
+    /// loading number of used point;
+    /// </summary>
+   public List<int> loadingUsedPoint;
+    /// <summary>
+    /// place holder
+    /// </summary>
     public string cheese;
-   public LoadingSave(string lol)
+
+   public LoadingSave(List<float> posX, List<float> posY, List<int> usedPoint)
+    {
+        spawnPosX = posX;
+        spawnPosY = posY;
+        loadingUsedPoint = usedPoint;
+        }
+    /// <summary>
+    /// testing and default setting
+    /// </summary>
+    /// <param name="lol">testing string</param>
+    public LoadingSave (string lol)
     {
         cheese = lol;
-        }
+    }
 
 }
