@@ -27,6 +27,10 @@ public class SpawnHouse_Lloyd : MonoBehaviour {
     /// </summary>
     public List<int> getUsedLocation
     {
+        set
+        {
+            usedLocation = value;
+        }
         get
         {
             return usedLocation;
@@ -75,7 +79,7 @@ public class SpawnHouse_Lloyd : MonoBehaviour {
                 case 1:
                     if (Input.GetButton("SpawnBuilding"))
                     {
-                        print("hehehe");
+                       
                         makeHouse(house1);
                         makingHouseStep = 2;
                     }
@@ -111,7 +115,7 @@ public class SpawnHouse_Lloyd : MonoBehaviour {
 
             while (checkPoint(indexOfSpawnLocation))
             {
-                print("eeee");
+                
                 indexOfSpawnLocation++;
                 if (indexOfSpawnLocation > (spawnPoint.Count - 1))
                 {
@@ -237,7 +241,7 @@ public class SpawnHouse_Lloyd : MonoBehaviour {
             {
                 return true;
             }
-            print("used Point " + usedLocation[i] + " spawnPointIndex " + spawnLocationIndex);
+         
         }
 
         return false;
