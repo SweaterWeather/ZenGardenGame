@@ -15,6 +15,11 @@ public class collisionDetection : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        print("test");
+        if(other.gameObject.tag == "Selector")
+        {
+            //I AM SELECTED
+            print("I AM SELECTED BRUHHH");
+        }
+        
     }
 }
