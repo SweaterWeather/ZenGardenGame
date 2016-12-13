@@ -46,6 +46,8 @@ public class SaveGameLloyd : MonoBehaviour {
     List<int> savedUsedPoint;
     /// <summary>
     /// initiate the reference for savedSpawnedPoint and savedUsedPoint
+    /// and spawnposX, spawnPosY
+    /// and make reference to the game
     /// </summary>
     
 	
@@ -61,33 +63,46 @@ public class SaveGameLloyd : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-      if(Input.GetButtonDown("SaveAndLoad"))
+        /*if (Input.GetButtonDown("SaveAndLoad")) 
         {
-            if (!isLoading) addInPosition();
+           
             if (isLoading) { LoadSlot1(); }
             else { SaveSlot1(); }
+            
            
         }
+       */
 
-        
 
-           
-	}
+
+
+    }
     /// <summary>
     /// saving the game
     /// </summary>
     public void SaveSlot1()
     {
-        LoadingSave ls =new LoadingSave(spawnPosX, spawnPosY,savedUsedPoint);
-        print("Save " + spawnPosX[0] + " " + spawnPosY[0]);
+      
         FileStream fs = null;
+        LoadingSave ls;
         try
         {
+            if(savedUsedPoint.Count == 0)
+            {
+                ls = new LoadingSave();
+            }
+            else
+            {
+                addInPosition();
+                ls = new LoadingSave(spawnPosX, spawnPosY, savedUsedPoint);
+                print("Save " + spawnPosX[0] + " " + spawnPosY[0]);
+            }
+         
             fs = new FileStream(SAVEGAMEDATALOCATION + SAVESLOT, FileMode.Create);
             BinaryFormatter bf = new BinaryFormatter();
            bf.Serialize(fs, ls);
             fs.Close();
-            print("Save");
+           
         }
         catch(Exception e)
         {
@@ -117,6 +132,7 @@ public class SaveGameLloyd : MonoBehaviour {
             spawnPosX = ls.spawnPosX;
             spawnPosY = ls.spawnPosY;
             savedUsedPoint = ls.loadingUsedPoint;
+            GetComponent<SpawnHouse_Lloyd>().getUsedLocation = ls.loadingUsedPoint;
            recreatingBuilding(spawnPosX, spawnPosY, savedUsedPoint);
             print("Load " + spawnPosX[0] + " " + spawnPosY[0]);
             print("Load");
@@ -156,11 +172,17 @@ public class SaveGameLloyd : MonoBehaviour {
     /// </summary>
     void addInPosition()
     {
+        List<float> PosX = new List<float>();
+        List<float> PosY = new List<float>();
         for (int i = 0; i < (savedUsedPoint.Count); i++)
         {
-            spawnPosX.Add(savedSpawnedPoint[savedUsedPoint[i]].transform.position.x);
-            spawnPosY.Add(savedSpawnedPoint[savedUsedPoint[i]].transform.position.y);
+            PosX.Add(savedSpawnedPoint[savedUsedPoint[i]].transform.position.x);
+            PosY.Add(savedSpawnedPoint[savedUsedPoint[i]].transform.position.y);
         }
+        spawnPosX = PosX;
+        spawnPosY = PosY;
+
+
     }
 
 }
@@ -187,8 +209,13 @@ class LoadingSave
     /// place holder
     /// </summary>
     public string cheese;
-
-   public LoadingSave(List<float> posX, List<float> posY, List<int> usedPoint)
+    /// <summary>
+    /// constructor for saving the game
+    /// </summary>
+    /// <param name="posX">list of x direction that is saved</param>
+    /// <param name="posY">list of y direction that is saved</param>
+    /// <param name="usedPoint">used point that is saved</param>
+    public LoadingSave(List<float> posX, List<float> posY, List<int> usedPoint)
     {
         spawnPosX = posX;
         spawnPosY = posY;
@@ -201,6 +228,13 @@ class LoadingSave
     public LoadingSave (string lol)
     {
         cheese = lol;
+    }
+    /// <summary>
+    /// default saving if used point length is 0
+    /// </summary>
+    public LoadingSave()
+    {
+
     }
 
 }
