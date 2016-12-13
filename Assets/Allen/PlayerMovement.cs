@@ -2,14 +2,17 @@
 using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
-    public float speedScaler = .01f;
-    float walkDir;
-	// Use this for initialization
-	void Start () {
+
+    /// <summary>
+    /// speedScaler: scales the speed, is editable in editor for easy testing.
+    /// </summary>
+    public float speedScaler = .01f;    
+
 	
-	}
 	
-	// Update is called once per frame
+    /// <summary>
+    /// Update is called once per frame. This function is getting raw input from the controller axis and directly affects the position of the object.
+    /// </summary>
 	void Update () {
         
 	    if(Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
