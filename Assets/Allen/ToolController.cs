@@ -20,8 +20,20 @@ public class ToolController : MonoBehaviour {
         if (Input.GetButtonDown("Hoe"))
         {
             print("HOE WAS USED");
-            //play hoe animation  
-            //selectorRotatorScript._dir
+            //play hoe animation              
+            if(selectorRotatorScript._dir >= 45 && selectorRotatorScript._dir < 135)
+            {
+                Animate.HoeForwards();
+            } else if (selectorRotatorScript._dir >= 135 && selectorRotatorScript._dir < 225)
+            {
+                Animate.HoeLeft();
+            } else if (selectorRotatorScript._dir >= 225 && selectorRotatorScript._dir < 315)
+            {
+                Animate.HoeBackward();
+            } else if (selectorRotatorScript._dir >= 315 || selectorRotatorScript._dir >= 0)
+            {
+                Animate.HoeRight();
+            }
         }
 
         if (Input.GetButtonDown("Pause"))
