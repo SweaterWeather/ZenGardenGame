@@ -186,7 +186,7 @@ public class SetColor2 : MonoBehaviour
                 }
             }
         }
-        print(targetText.format+", "+this.gameObject);
+        //print(targetText.format+", "+this.gameObject);
         targetText.SetPixels(colors);
         targetText.Apply();
 
