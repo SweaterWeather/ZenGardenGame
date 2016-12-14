@@ -25,7 +25,7 @@ public class HeadAnimate : MonoBehaviour
     /// 3: Old Woman
     /// 4: Panda
     /// </summary>
-    public static int index = 4;
+    public static int index;
 
     /// <summary>
     /// The current frame of the animation.

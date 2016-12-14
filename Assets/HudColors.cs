@@ -35,6 +35,31 @@ public class HudColors : MonoBehaviour
     public SetColor headSeed5;
 
     /// <summary>
+    /// The source head for reinstantiation every time the colors are altered.
+    /// </summary>
+    public SetColor headSeedBack1;
+
+    /// <summary>
+    /// The source head for reinstantiation every time the colors are altered.
+    /// </summary>
+    public SetColor headSeedBack2;
+
+    /// <summary>
+    /// The source head for reinstantiation every time the colors are altered.
+    /// </summary>
+    public SetColor headSeedBack3;
+
+    /// <summary>
+    /// The source head for reinstantiation every time the colors are altered.
+    /// </summary>
+    public SetColor headSeedBack4;
+
+    /// <summary>
+    /// The source head for reinstantiation every time the colors are altered.
+    /// </summary>
+    public SetColor headSeedBack5;
+
+    /// <summary>
     /// The source body for reinstantiation every time the colors are altered.
     /// </summary>
     public SetColor bodySeed;
@@ -43,6 +68,11 @@ public class HudColors : MonoBehaviour
     /// This is the head of the sprite.
     /// </summary>
     public SetColor head;
+
+    /// <summary>
+    /// This is the head of the sprite.
+    /// </summary>
+    public SetColor headBack;
 
     /// <summary>
     /// This is the body of the sprite.
@@ -438,22 +468,28 @@ public class HudColors : MonoBehaviour
     /// </summary>
     public void Refresh () {
         Destroy(head.gameObject);
+        Destroy(headBack.gameObject);
         Destroy(body.gameObject);
         switch (HeadAnimate.index)
         {
             case 0:
+                headBack = Instantiate(headSeedBack1);
                 head = Instantiate(headSeed1);
                 break;
             case 1:
+                headBack = Instantiate(headSeedBack2);
                 head = Instantiate(headSeed2);
                 break;
             case 2:
+                headBack = Instantiate(headSeedBack3);
                 head = Instantiate(headSeed3);
                 break;
             case 3:
+                headBack = Instantiate(headSeedBack4);
                 head = Instantiate(headSeed4);
                 break;
             case 4:
+                headBack = Instantiate(headSeedBack5);
                 head = Instantiate(headSeed5);
                 break;
 
