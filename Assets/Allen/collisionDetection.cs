@@ -13,6 +13,7 @@ public class collisionDetection : MonoBehaviour {
         {
             //I AM SELECTED
             print("I AM SELECTED BRUHHH");
+            this.gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().enabled = true;
             selected = true;
         }
         
@@ -23,6 +24,7 @@ public class collisionDetection : MonoBehaviour {
         {
             //I AM SELECTED
             print("DONT LEAVE ME BRUHHH, COME BACK!");
+            this.gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().enabled = false;
             selected = false;
         }
 
