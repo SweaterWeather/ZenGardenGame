@@ -23,7 +23,7 @@ public class PlantGrowing_Lloyd : MonoBehaviour {
     /// <summary>
     /// check if the gameObject is watered
     /// </summary>
-    bool isWater = false;
+    public bool isWater = false;
     /// <summary>
     /// the stage of the plant
     /// 0 = seed
