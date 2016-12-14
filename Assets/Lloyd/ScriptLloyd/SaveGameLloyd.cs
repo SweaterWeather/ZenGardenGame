@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 /// <summary>
+/// ONLY USE FOR HOUSE
 /// SAve game that is in the main camera to save the location of the spawned house
 /// </summary>
 public class SaveGameLloyd : MonoBehaviour {
