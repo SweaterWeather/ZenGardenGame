@@ -502,7 +502,7 @@ public class HudColors : MonoBehaviour
     /// </summary>
     public void LoadGame()
     {
-        SceneManager.LoadScene(0);
+        print("play!");
     }
 
 
