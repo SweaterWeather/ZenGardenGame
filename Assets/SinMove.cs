@@ -29,7 +29,7 @@ public class SinMove : MonoBehaviour {
     public void SwitchToPlay()
     {
         AudioPlayer.PlayClickSound();
-        print("play!");
+        SceneManager.LoadScene(2);
     }
 
     /// <summary>

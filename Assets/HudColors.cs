@@ -502,7 +502,7 @@ public class HudColors : MonoBehaviour
     /// </summary>
     public void LoadGame()
     {
-        print("play!");
+        SceneManager.LoadScene(2);
     }
 
 
@@ -510,5 +510,13 @@ public class HudColors : MonoBehaviour
     {
         HeadAnimate.index = drop.value;
         Refresh();
+    }
+
+    /// <summary>
+    /// This resets the save data.
+    /// </summary>
+    void Start()
+    {
+        SavePlant_Lloyd.delete();
     }
 }

@@ -6,6 +6,7 @@ public class ToolController : MonoBehaviour {
 
 	static public int waterCounter = 0;
     public bool canGetWater = false;
+    public bool canSell = false;
 	/// <summary>
     /// Update is ran once per frame. This is constantly checking to see if the tool's button is pressed.
     /// </summary>
@@ -18,6 +19,7 @@ public class ToolController : MonoBehaviour {
 
             if (canGetWater) { 
                 waterCounter = 3;
+                UI.water = waterCounter;
             }
             print(waterCounter);
 
@@ -43,6 +45,13 @@ public class ToolController : MonoBehaviour {
         }
         if (Input.GetButtonDown("Hoe")) //E
         {
+            if (canSell)
+            {
+                UI.score += UI.crops;
+                UI.crops = 0;
+
+            }
+            
             //print("HOE WAS USED");
                       
             if(selectorRotatorScript._dir >= 45 && selectorRotatorScript._dir < 135)
@@ -71,12 +80,14 @@ public class ToolController : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Water") canGetWater = true;
+        if (other.gameObject.tag == "Store") canSell = true;
         
 
     }
     void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Water") canGetWater = false;
+        if (other.gameObject.tag == "Store") canSell = false;
     }
 
 }

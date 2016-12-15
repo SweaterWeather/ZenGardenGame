@@ -7,7 +7,20 @@ using System;
 /// <summary>
 /// Save plant Only
 /// </summary>
-public class SavePlant_Lloyd : MonoBehaviour {
+public class SavePlant_Lloyd : MonoBehaviour
+{
+    /// <summary>
+    /// Money value to be saved.
+    /// </summary>
+    int money;
+    /// <summary>
+    /// Water value to be saved.
+    /// </summary>
+    int waterAmmount;
+    /// <summary>
+    /// Crop value to be saved.
+    /// </summary>
+    int cropAmmount;
     /// <summary>
     /// testing purposes for turning on and off loading
     /// 
@@ -16,7 +29,7 @@ public class SavePlant_Lloyd : MonoBehaviour {
     /// <summary>
     /// reference to the plant to be spawned when load
     /// </summary>
-    public PlantGrowing_Lloyd plant;
+    public FlagForSaving plant;
     /// <summary>
     /// reference to itself
     /// </summary>
@@ -32,7 +45,7 @@ public class SavePlant_Lloyd : MonoBehaviour {
     /// <summary>
     /// reference to all the plants in the scene
     /// </summary>
-    PlantGrowing_Lloyd[] plants;
+    FlagForSaving[] plants;
     /// <summary>
     /// reference to the position of those plant in x
     /// </summary>
@@ -46,10 +59,24 @@ public class SavePlant_Lloyd : MonoBehaviour {
     /// </summary>
     List<float> plantPositionsZ = new List<float>();
 
-/// <summary>
-/// inititate savePlant_Lloyd
-/// </summary>
-   void Start()
+    /// <summary>
+    /// set water
+    /// </summary>
+    List<bool> isWater = new List<bool>();
+    /// <summary>
+    /// setvisible of plant
+    /// </summary>
+
+    List<bool> isVisible = new List<bool>();
+
+    List<bool> isGrowing = new List<bool>();
+
+    List<float> growthEXP = new List<float>();
+
+    /// <summary>
+    /// inititate savePlant_Lloyd
+    /// </summary>
+    void Start()
     {
         savePlant_Lloyd = this;
     }
@@ -58,26 +85,44 @@ public class SavePlant_Lloyd : MonoBehaviour {
     /// </summary>
     // Update is called once per frame
     void Update () {
-        /*
+        
         if (Input.GetKeyDown(KeyCode.V))
         {
             if (!isLoading) savePlant();
             else loadPlant();
 
 
-        }*/
+        }
 	}
+
+
+    public static void delete()
+    {
+        try { File.Delete(SAVEPLANTLOCATION + SAVE_NAME); }
+        catch(Exception gyrados)
+        {
+            print(gyrados);
+        }
+          
+   
+
+
+    }
     /// <summary>
     /// save plant
     /// </summary>
     public void savePlant()
     {
-        plants = FindObjectsOfType<PlantGrowing_Lloyd>();
+        money = UI.score;
+        cropAmmount = UI.crops;
+        waterAmmount = UI.water;
+        plants = FindObjectsOfType<FlagForSaving>();
         FileStream fs = null;
         try
         {
-            getPlantPosition();
-            PlantSaveData psd = new PlantSaveData(plantPositionsX,plantPositionsY,plantPositionsZ);
+            setWaterAndVisible();
+            ///getPlantPosition();
+            PlantSaveData psd = new PlantSaveData(isWater,isVisible,isGrowing,growthEXP, money, cropAmmount, waterAmmount);
             fs = new FileStream(SAVEPLANTLOCATION + SAVE_NAME, FileMode.Create);
             BinaryFormatter bf = new BinaryFormatter();
             bf.Serialize(fs, psd);
@@ -94,7 +139,33 @@ public class SavePlant_Lloyd : MonoBehaviour {
         }
     
     }
+    /// <summary>
+    /// set water and its visible
+    /// </summary>
+    public void setWaterAndVisible(){
+        isVisible.Clear();
+        isWater.Clear();
+        isGrowing.Clear();
+        growthEXP.Clear();
+        for(int i = 0; i < plants.Length; i++)
+        {
+            isWater.Add(plants[i].gameObject.transform.GetChild(1).GetComponent<PlantGrowing_Lloyd>().isWater);
+            isVisible.Add(plants[i].gameObject.GetComponent<collisionDetection>()._plantVisible);
+            isGrowing.Add(plants[i].gameObject.transform.GetChild(1).GetComponent<PlantGrowing_Lloyd>().isGrowing);
+            growthEXP.Add(plants[i].gameObject.transform.GetChild(1).GetComponent<PlantGrowing_Lloyd>().growthEXP);
+        }
 
+
+
+        }
+
+    public void LoadingMoney(int mon, int wah, int crop)
+    {
+        UI.crops = crop;
+        ToolController.waterCounter = wah;
+        UI.water = wah;
+        UI.score = mon;
+    }
 
     /// <summary>
     /// loading and spawning plant information
@@ -107,7 +178,10 @@ public class SavePlant_Lloyd : MonoBehaviour {
             fs = new FileStream(SAVEPLANTLOCATION + SAVE_NAME, FileMode.Open);
             BinaryFormatter bf = new BinaryFormatter();
             PlantSaveData psd = (PlantSaveData)bf.Deserialize(fs);
-            spawnPlant(psd.plantPosX, psd.plantPosY, psd.plantPosZ);
+
+            LoadingMoney(psd.money, psd.waterr, psd.crops);
+            planted(psd.isWaterVis, psd.isVisible, psd.isGrowing, psd.growthExp);
+           // spawnPlant(psd.plantPosX, psd.plantPosY, psd.plantPosZ);
             fs.Close();
             print("loaded");
 
@@ -122,6 +196,22 @@ public class SavePlant_Lloyd : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// repopulate plant from previous save
+    /// </summary>
+    public void planted(List<bool>water, List<bool>visible, List<bool>growing, List<float>exp)
+    {
+        FlagForSaving[] plants = FindObjectsOfType<FlagForSaving>();
+
+        for(int i = 0; i < plants.Length; i++)
+        {
+            plants[i].gameObject.transform.GetChild(1).GetComponent<PlantGrowing_Lloyd>().isWater = water[i];
+            plants[i].gameObject.GetComponent<collisionDetection>()._plantVisible = visible[i];
+            plants[i].gameObject.transform.GetChild(1).GetComponent<PlantGrowing_Lloyd>().isGrowing = growing[i];
+            plants[i].gameObject.transform.GetChild(1).GetComponent<PlantGrowing_Lloyd>().growthEXP = exp[i];
+            plants[i].gameObject.transform.GetChild(1).GetComponent<Animator>().SetFloat("growthEXP",exp[i]);
+        }
+    }
 
     /// <summary>
     /// spawn plant to the saved location
@@ -162,10 +252,23 @@ public class SavePlant_Lloyd : MonoBehaviour {
 [Serializable]
 ///information of plants that is being serialized
 class PlantSaveData
-{/// <summary>
-/// plant x direction
-/// </summary>
-   public List<float> plantPosX;
+{
+    /// <summary>
+    /// THe ammount of money
+    /// </summary>
+    public int money;
+    /// <summary>
+    /// THe ammount of money
+    /// </summary>
+    public int waterr;
+    /// <summary>
+    /// THe ammount of money
+    /// </summary>
+    public int crops;
+    /// <summary>
+    /// plant x direction
+    /// </summary>
+    public List<float> plantPosX;
     /// <summary>
     /// plant Y direction
     /// </summary>
@@ -175,8 +278,21 @@ class PlantSaveData
     /// </summary>
     public List<float> plantPosZ;
     /// <summary>
+    /// track if seed are watered
+    /// </summary>
+    public List<bool> isWaterVis;
+    /// <summary>
+    /// track if seeds are visible
+    /// </summary>
+    public List<bool> isVisible;
+
+    public List<bool> isGrowing;
+
+    public List<float> growthExp;
+    /// <summary>
     /// default constructor for saving
     /// </summary>
+    /// 
     public PlantSaveData()
     {
 
@@ -192,5 +308,17 @@ class PlantSaveData
         plantPosX = x;
         plantPosY = y;
         plantPosZ = z;
+    }
+
+    public PlantSaveData(List<bool>water, List<bool> visible, List<bool> growing, List<float> exp, int mon, int crop, int wah)
+    {
+        isWaterVis = water;
+        isVisible = visible;
+        isGrowing = growing;
+        growthExp = exp;
+        waterr = wah;
+        crops = crop;
+        money = mon;
+
     }
 }

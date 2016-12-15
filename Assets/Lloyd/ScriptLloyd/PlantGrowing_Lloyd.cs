@@ -24,6 +24,9 @@ public class PlantGrowing_Lloyd : MonoBehaviour {
     /// check if the gameObject is watered
     /// </summary>
     public bool isWater = false;
+    /// <summary>
+    /// check if the plant is growning
+    /// </summary>
     public bool isGrowing = false;
     /// <summary>
     /// the stage of the plant

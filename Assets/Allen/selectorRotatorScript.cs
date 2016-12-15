@@ -23,23 +23,25 @@ public class selectorRotatorScript : MonoBehaviour {
         transform.rotation = Quaternion.Euler(0, 0, walkDir);       
 
         _dir = transform.rotation.eulerAngles.z;
-        
+
 
         //What dir is the player facing? This code decides.
-        if (_dir >= 337.5) Animate.WalkForwardRight();//walk right
-        if (_dir >= 0 && _dir < 22.5) Animate.WalkForwardRight(); //walk right
-        if (_dir >= 22.5 && _dir < 67.5) Animate.WalkBackwardRight();//walk up and right
-        if (_dir >= 67.5 && _dir < 112.5) Animate.WalkBackwards(); //walk up
-        if (_dir >= 112.5 && _dir < 157.5) Animate.WalkBackwardLeft(); //walk up and left;
-        if (_dir >= 157.5 && _dir < 202.5) Animate.WalkForwardLeft(); //walk left
-        if (_dir >= 202.5 && _dir < 249.5) Animate.WalkForwardLeft(); //walk down and left;
-        if (_dir >= 249.5 && _dir < 292.5) Animate.WalkForwards(); //walk down
-        if (_dir >= 292.5 && _dir < 337.5) Animate.WalkForwardRight(); //walk down and right
+        if (Animate.animState < 8) {
+            if (_dir >= 337.5) Animate.WalkForwardRight();//walk right
+            if (_dir >= 0 && _dir < 22.5) Animate.WalkForwardRight(); //walk right
+            if (_dir >= 22.5 && _dir < 67.5) Animate.WalkBackwardRight();//walk up and right
+            if (_dir >= 67.5 && _dir < 112.5) Animate.WalkBackwards(); //walk up
+            if (_dir >= 112.5 && _dir < 157.5) Animate.WalkBackwardLeft(); //walk up and left;
+            if (_dir >= 157.5 && _dir < 202.5) Animate.WalkForwardLeft(); //walk left
+            if (_dir >= 202.5 && _dir < 249.5) Animate.WalkForwardLeft(); //walk down and left;
+            if (_dir >= 249.5 && _dir < 292.5) Animate.WalkForwards(); //walk down
+            if (_dir >= 292.5 && _dir < 337.5) Animate.WalkForwardRight(); //walk down and right
+        }
 
         //Stops the walk animate when the controller axis falls below a certain point.
         if(Mathf.Abs(Input.GetAxis("Vertical")) <= .2f && Mathf.Abs(Input.GetAxis("Horizontal")) <= .2f)
         {
-            Animate.Stop();
+            if(Animate.animState < 8)Animate.Stop();
         }
 
     }

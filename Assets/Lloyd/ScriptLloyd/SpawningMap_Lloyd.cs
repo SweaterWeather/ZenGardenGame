@@ -4,6 +4,7 @@ using System.Collections;
 /// this class use to spawn map
 /// </summary>
 public class SpawningMap_Lloyd : MonoBehaviour {
+    public SavePlant_Lloyd save;
     /// <summary>
     /// this array is reference to the world map
     /// </summary>
@@ -30,6 +31,7 @@ public class SpawningMap_Lloyd : MonoBehaviour {
     /// </summary>
 	void Start () {
         createMap();
+        if(save)save.loadPlant();
 	}
 
     /// <summary>
