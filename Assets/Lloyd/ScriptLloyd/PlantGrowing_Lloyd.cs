@@ -11,7 +11,7 @@ public class PlantGrowing_Lloyd : MonoBehaviour {
     /// <summary>
     /// the experience of the gameObject gets overtime
     /// </summary>
-    float growthEXP = 0;
+    public float growthEXP = 0;
     /// <summary>
     /// a multiplier for the growth exp
     /// </summary>
@@ -24,6 +24,7 @@ public class PlantGrowing_Lloyd : MonoBehaviour {
     /// check if the gameObject is watered
     /// </summary>
     public bool isWater = false;
+    public bool isGrowing = false;
     /// <summary>
     /// the stage of the plant
     /// 0 = seed
@@ -44,11 +45,12 @@ public class PlantGrowing_Lloyd : MonoBehaviour {
     /// updating growthEXP
     /// </summary>
 	void Update () {
+
         if (isWater)
         {
             growthEXP += Time.deltaTime * growthSpeed * 1.5f;
             }
-        else
+        else if (isGrowing)
         {
             growthEXP += Time.deltaTime * growthSpeed;
         }

@@ -13,7 +13,7 @@ public class ToolController : MonoBehaviour {
         
         if (Input.GetButtonDown("WaterCan")) //Q
         {
-            print("WATER CAN WAS USED");
+            //print("WATER CAN WAS USED");
             //play hoe animation    
             if (selectorRotatorScript._dir >= 45 && selectorRotatorScript._dir < 135)
             {
@@ -35,7 +35,7 @@ public class ToolController : MonoBehaviour {
         }
         if (Input.GetButtonDown("Hoe")) //E
         {
-            print("HOE WAS USED");
+            //print("HOE WAS USED");
                       
             if(selectorRotatorScript._dir >= 45 && selectorRotatorScript._dir < 135)
             {
