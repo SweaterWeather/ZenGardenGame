@@ -43,6 +43,7 @@ public class collisionDetection : MonoBehaviour {
             //destroy / harvest plant if exp is passsed certain point.
             if (this.gameObject.transform.GetChild(1).GetComponent<PlantGrowing_Lloyd>().growthEXP >= 99)
             {
+                AudioPlayer.PlayHarvestSound();
                 //fully grown, you get 3 wheat. Congrats.
                 print("you get 3 wheat because you were patient enough to wait until it was fully grown.");
                 UI.crops += 3;
@@ -57,6 +58,7 @@ public class collisionDetection : MonoBehaviour {
             }
             else if (this.gameObject.transform.GetChild(1).GetComponent<PlantGrowing_Lloyd>().growthEXP >= 66)
             {
+                AudioPlayer.PlayHarvestSound();
                 //not fully grown, you only get 1 wheat
                 print("you get 1 wheat because you are impatient. Let plant grow!");
                 UI.crops += 1;

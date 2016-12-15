@@ -502,7 +502,8 @@ public class HudColors : MonoBehaviour
     /// </summary>
     public void LoadGame()
     {
-        SceneManager.LoadScene(2);
+        AudioPlayer.PlayClickSound();
+        print("play!");
     }
 
 
