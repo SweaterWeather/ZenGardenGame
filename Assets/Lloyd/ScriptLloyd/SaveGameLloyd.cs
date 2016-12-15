@@ -189,6 +189,7 @@ public class SaveGameLloyd : MonoBehaviour {
 }
 
 [Serializable]
+///Saving the Structure for the game ONLY
 class LoadingSave
 {/// <summary>
 /// saving the game into data

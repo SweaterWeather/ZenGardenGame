@@ -25,14 +25,13 @@ public class SpawningMap_Lloyd : MonoBehaviour {
     /// stone sprite
     /// </summary>
     public GameObject stone;
+    /// <summary>
+    /// get function create map to make the map appear
+    /// </summary>
 	void Start () {
         createMap();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
     /// <summary>
     /// create the map of the game
     /// </summary>

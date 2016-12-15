@@ -9,6 +9,11 @@ using System;
 /// </summary>
 public class SavePlant_Lloyd : MonoBehaviour {
     /// <summary>
+    /// testing purposes for turning on and off loading
+    /// 
+    /// </summary>
+    public bool isLoading = false;
+    /// <summary>
     /// reference to the plant to be spawned when load
     /// </summary>
     public PlantGrowing_Lloyd plant;
@@ -48,14 +53,19 @@ public class SavePlant_Lloyd : MonoBehaviour {
     {
         savePlant_Lloyd = this;
     }
-
+    /// <summary>
+    /// testing with save and load
+    /// </summary>
     // Update is called once per frame
     void Update () {
+        /*
         if (Input.GetKeyDown(KeyCode.V))
         {
-            savePlant();
-            
-        }
+            if (!isLoading) savePlant();
+            else loadPlant();
+
+
+        }*/
 	}
     /// <summary>
     /// save plant
@@ -99,6 +109,7 @@ public class SavePlant_Lloyd : MonoBehaviour {
             PlantSaveData psd = (PlantSaveData)bf.Deserialize(fs);
             spawnPlant(psd.plantPosX, psd.plantPosY, psd.plantPosZ);
             fs.Close();
+            print("loaded");
 
         }
         catch(Exception e)
