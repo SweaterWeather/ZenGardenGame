@@ -41,7 +41,7 @@ public class collisionDetection : MonoBehaviour {
                 this.gameObject.transform.GetChild(1).GetComponent<PlantGrowing_Lloyd>().isGrowing = false;
                 this.gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().enabled = false;
                 this.gameObject.transform.GetChild(1).GetComponent<PlantGrowing_Lloyd>().growthEXP = 0;
-                this.gameObject.transform.GetChild(1).GetComponent<Animator>().Play("Bud_Lloyd");
+                this.gameObject.transform.GetChild(1).GetComponent<Animator>().Play("Bud_Lloyd"); //resets the animator to frame 1
             }
             else if(this.gameObject.transform.GetChild(1).GetComponent<PlantGrowing_Lloyd>().growthEXP >= 66)
             {
@@ -51,7 +51,7 @@ public class collisionDetection : MonoBehaviour {
                 this.gameObject.transform.GetChild(1).GetComponent<PlantGrowing_Lloyd>().isGrowing = false;
                 this.gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().enabled = false;
                 this.gameObject.transform.GetChild(1).GetComponent<PlantGrowing_Lloyd>().growthEXP = 0;
-                this.gameObject.transform.GetChild(1).GetComponent<Animator>().Play("Bud_Lloyd");
+                this.gameObject.transform.GetChild(1).GetComponent<Animator>().Play("Bud_Lloyd"); //resets the animator to frame 1
             }
         }
     }
@@ -61,7 +61,7 @@ public class collisionDetection : MonoBehaviour {
         if(other.gameObject.tag == "Selector")
         {
             //I AM SELECTED
-            print("I AM SELECTED BRUHHH");
+            
             this.gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().enabled = true;
             selected = true;
         }
@@ -73,8 +73,8 @@ public class collisionDetection : MonoBehaviour {
     {
         if (other.gameObject.tag == "Selector")
         {
-            //I AM SELECTED
-            print("DONT LEAVE ME BRUHHH, COME BACK!");
+            //I AM NOT SELECTED
+            
             this.gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().enabled = false;
             selected = false;
         }

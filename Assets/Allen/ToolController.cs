@@ -4,7 +4,8 @@ using System.Collections;
 public class ToolController : MonoBehaviour {
 
 
-	
+	static public int waterCounter = 0;
+    public bool canGetWater = false;
 	/// <summary>
     /// Update is ran once per frame. This is constantly checking to see if the tool's button is pressed.
     /// </summary>
@@ -13,8 +14,15 @@ public class ToolController : MonoBehaviour {
         
         if (Input.GetButtonDown("WaterCan")) //Q
         {
-            //print("WATER CAN WAS USED");
-            //play hoe animation    
+
+
+            if (canGetWater) { 
+                waterCounter = 3;
+            }
+
+
+            //play water animation    
+
             if (selectorRotatorScript._dir >= 45 && selectorRotatorScript._dir < 135)
             {
                 Animate.WaterBackward();
@@ -58,7 +66,17 @@ public class ToolController : MonoBehaviour {
         {
             print("PauseTest");
         }
-	}
-    
-    
+	}//Update
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Water") canGetWater = true;
+        print("VASSER");
+
+    }
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Water") canGetWater = false;
+    }
+
 }
