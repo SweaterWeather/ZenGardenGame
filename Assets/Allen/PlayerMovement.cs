@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour {
     /// <summary>
     /// speedScaler: scales the speed, is editable in editor for easy testing.
     /// </summary>
-    public float speedScaler = .01f;    
+    public float speedScaler = 10f;    
 
 	
 	
@@ -17,8 +17,8 @@ public class PlayerMovement : MonoBehaviour {
         
 	    if(Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
         {
-            transform.position += new Vector3(0, Input.GetAxis("Vertical") * speedScaler); //UP + DOWN
-            transform.position += new Vector3(Input.GetAxis("Horizontal") * speedScaler, 0); //RIGHT + LEFT
+            transform.position += new Vector3(0, Input.GetAxis("Vertical") * speedScaler * Time.deltaTime); //UP + DOWN
+            transform.position += new Vector3(Input.GetAxis("Horizontal") * speedScaler * Time.deltaTime, 0); //RIGHT + LEFT
 
             //walkDir = Mathf.Atan2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal")) * (180 / Mathf.PI);
         }

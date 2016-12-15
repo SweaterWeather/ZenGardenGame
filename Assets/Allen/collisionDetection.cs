@@ -12,6 +12,8 @@ public class collisionDetection : MonoBehaviour {
             if (this.gameObject.transform.GetChild(1).GetComponent<PlantGrowing_Lloyd>().isGrowing && ToolController.waterCounter > 0)
             {
                 this.gameObject.transform.GetChild(1).GetComponent<PlantGrowing_Lloyd>().isWater = true;
+                this.gameObject.transform.GetChild(2).GetComponent<MeshRenderer>().enabled = true;
+
                 ToolController.waterCounter--;
                 print("watered");
             }
@@ -43,6 +45,7 @@ public class collisionDetection : MonoBehaviour {
                 this.gameObject.transform.GetChild(1).GetComponent<PlantGrowing_Lloyd>().isGrowing = false;
                 this.gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().enabled = false;
                 this.gameObject.transform.GetChild(1).GetComponent<PlantGrowing_Lloyd>().isWater = false;
+                this.gameObject.transform.GetChild(2).GetComponent<MeshRenderer>().enabled = false;
                 this.gameObject.transform.GetChild(1).GetComponent<PlantGrowing_Lloyd>().growthEXP = 0;
                 this.gameObject.transform.GetChild(1).GetComponent<Animator>().Play("Bud_Lloyd"); //resets the animator to frame 1
             }
@@ -54,6 +57,7 @@ public class collisionDetection : MonoBehaviour {
                 this.gameObject.transform.GetChild(1).GetComponent<PlantGrowing_Lloyd>().isGrowing = false;
                 this.gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().enabled = false;
                 this.gameObject.transform.GetChild(1).GetComponent<PlantGrowing_Lloyd>().isWater = false;
+                this.gameObject.transform.GetChild(2).GetComponent<MeshRenderer>().enabled = false;
                 this.gameObject.transform.GetChild(1).GetComponent<PlantGrowing_Lloyd>().growthEXP = 0;
                 this.gameObject.transform.GetChild(1).GetComponent<Animator>().Play("Bud_Lloyd"); //resets the animator to frame 1
             }
