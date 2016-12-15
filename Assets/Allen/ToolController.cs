@@ -19,7 +19,7 @@ public class ToolController : MonoBehaviour {
             if (canGetWater) { 
                 waterCounter = 3;
             }
-
+            print(waterCounter);
 
             //play water animation    
 
@@ -71,7 +71,7 @@ public class ToolController : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Water") canGetWater = true;
-        print("VASSER");
+        
 
     }
     void OnTriggerExit(Collider other)

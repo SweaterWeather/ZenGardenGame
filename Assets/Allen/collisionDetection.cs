@@ -12,6 +12,8 @@ public class collisionDetection : MonoBehaviour {
             if (this.gameObject.transform.GetChild(1).GetComponent<PlantGrowing_Lloyd>().isGrowing)
             {
                 this.gameObject.transform.GetChild(1).GetComponent<PlantGrowing_Lloyd>().isWater = true;
+                ToolController.waterCounter--;
+                print("watered");
             }
             else
             {
