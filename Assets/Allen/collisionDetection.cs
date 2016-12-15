@@ -41,6 +41,7 @@ public class collisionDetection : MonoBehaviour {
                 this.gameObject.transform.GetChild(1).GetComponent<PlantGrowing_Lloyd>().isGrowing = false;
                 this.gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().enabled = false;
                 this.gameObject.transform.GetChild(1).GetComponent<PlantGrowing_Lloyd>().growthEXP = 0;
+                this.gameObject.transform.GetChild(1).GetComponent<Animator>().Play("Bud_Lloyd");
             }
             else if(this.gameObject.transform.GetChild(1).GetComponent<PlantGrowing_Lloyd>().growthEXP >= 66)
             {
@@ -50,6 +51,7 @@ public class collisionDetection : MonoBehaviour {
                 this.gameObject.transform.GetChild(1).GetComponent<PlantGrowing_Lloyd>().isGrowing = false;
                 this.gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().enabled = false;
                 this.gameObject.transform.GetChild(1).GetComponent<PlantGrowing_Lloyd>().growthEXP = 0;
+                this.gameObject.transform.GetChild(1).GetComponent<Animator>().Play("Bud_Lloyd");
             }
         }
     }
