@@ -7,6 +7,14 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class SinMove : MonoBehaviour {
 
+    /// <summary>
+    /// This only plays the music.
+    /// </summary>
+    void Start()
+    {
+        AudioPlayer.PlayTitleMusic();
+    }
+
 	/// <summary>
     /// This makes the camera move with a sin wave.
     /// </summary>
@@ -20,6 +28,7 @@ public class SinMove : MonoBehaviour {
     /// </summary>
     public void SwitchToPlay()
     {
+        AudioPlayer.PlayClickSound();
         print("play!");
     }
 
@@ -28,6 +37,7 @@ public class SinMove : MonoBehaviour {
     /// </summary>
     public void SwitchToBuild()
     {
+        AudioPlayer.PlayClickSound();
         SceneManager.LoadScene(1);
     }
 }
