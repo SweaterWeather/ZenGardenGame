@@ -66,11 +66,14 @@ public class SavePlant_Lloyd : MonoBehaviour
     /// <summary>
     /// setvisible of plant
     /// </summary>
-
     List<bool> isVisible = new List<bool>();
-
+    /// <summary>
+    /// A list containing all isGrowing bools for every plant in the game.
+    /// </summary>
     List<bool> isGrowing = new List<bool>();
-
+    /// <summary>
+    /// A list containting all the growth exp values of every plant in the game.
+    /// </summary>
     List<float> growthEXP = new List<float>();
 
     /// <summary>
@@ -95,7 +98,9 @@ public class SavePlant_Lloyd : MonoBehaviour
         }
 	}
 
-
+    /// <summary>
+    /// This function triggers the game to delete your previous save data.
+    /// </summary>
     public static void delete()
     {
         try { File.Delete(SAVEPLANTLOCATION + SAVE_NAME); }
@@ -159,6 +164,12 @@ public class SavePlant_Lloyd : MonoBehaviour
 
         }
 
+    /// <summary>
+    /// This function loads the values of all the UI values.
+    /// </summary>
+    /// <param name="mon">The money, or score.</param>
+    /// <param name="wah">THe water ammount.</param>
+    /// <param name="crop">How many crops are harvested.</param>
     public void LoadingMoney(int mon, int wah, int crop)
     {
         UI.crops = crop;
@@ -285,9 +296,13 @@ class PlantSaveData
     /// track if seeds are visible
     /// </summary>
     public List<bool> isVisible;
-
+    /// <summary>
+    /// A list of all isGrowing bools.
+    /// </summary>
     public List<bool> isGrowing;
-
+    /// <summary>
+    /// A list of all plant growth values.
+    /// </summary>
     public List<float> growthExp;
     /// <summary>
     /// default constructor for saving
@@ -309,7 +324,16 @@ class PlantSaveData
         plantPosY = y;
         plantPosZ = z;
     }
-
+    /// <summary>
+    /// This function sets the values of all plants.
+    /// </summary>
+    /// <param name="water">The plants watered satus.</param>
+    /// <param name="visible">Whether the plant is visible or not.</param>
+    /// <param name="growing">Whether the plant is growning or not.</param>
+    /// <param name="exp">The plant's exp.</param>
+    /// <param name="mon">The money that the player has.</param>
+    /// <param name="crop">The ammount of crops that the player has.</param>
+    /// <param name="wah">The ammount of water that the player has.</param>
     public PlantSaveData(List<bool>water, List<bool> visible, List<bool> growing, List<float> exp, int mon, int crop, int wah)
     {
         isWaterVis = water;

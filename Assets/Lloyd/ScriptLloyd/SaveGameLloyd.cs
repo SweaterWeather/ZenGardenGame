@@ -45,13 +45,12 @@ public class SaveGameLloyd : MonoBehaviour {
     /// List of the point that is used
     /// </summary>
     List<int> savedUsedPoint;
+
     /// <summary>
     /// initiate the reference for savedSpawnedPoint and savedUsedPoint
     /// and spawnposX, spawnPosY
     /// and make reference to the game
-    /// </summary>
-    
-	
+    /// </summary>	
 	void Start () {
         saveGameLloyd = this;
         savedSpawnedPoint = GetComponent<SpawnHouse_Lloyd>().spawnPoint;
@@ -62,7 +61,9 @@ public class SaveGameLloyd : MonoBehaviour {
 
     }
 	
-	// Update is called once per frame
+	/// <summary>
+    /// This is the update loop.  Lloyd appreas to have commented out its contents.
+    /// </summary>
 	void Update () {
         /*if (Input.GetButtonDown("SaveAndLoad")) 
         {

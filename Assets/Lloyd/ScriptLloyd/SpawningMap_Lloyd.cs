@@ -4,6 +4,9 @@ using System.Collections;
 /// this class use to spawn map
 /// </summary>
 public class SpawningMap_Lloyd : MonoBehaviour {
+    /// <summary>
+    /// A reference to the save game script.
+    /// </summary>
     public SavePlant_Lloyd save;
     /// <summary>
     /// this array is reference to the world map

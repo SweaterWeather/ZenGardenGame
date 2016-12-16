@@ -28,7 +28,7 @@ public class CharacterAnimationController : MonoBehaviour {
     public static int animState;
 	
 	/// <summary>
-    /// 
+    /// This update loop is unfinished as this script is unused.
     /// </summary>
 	void Update () {
         switch (animState)

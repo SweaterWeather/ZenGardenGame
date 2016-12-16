@@ -1,11 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// This script controls the tool behaviors in game.
+/// </summary>
 public class ToolController : MonoBehaviour {
 
-
+    /// <summary>
+    /// The ammount of water the player has.
+    /// </summary>
 	static public int waterCounter = 0;
+    /// <summary>
+    /// If the player can get water.
+    /// </summary>
     public bool canGetWater = false;
+    /// <summary>
+    /// If the player can trade crops for money.
+    /// </summary>
     public bool canSell = false;
 
     /// <summary>
@@ -90,8 +101,10 @@ public class ToolController : MonoBehaviour {
         }
 	}//Update
 
-
-    //These collision detectors are just stating if we can get water or turn in crops to the store. Depending on if the "selector" is hitting certain object types.
+    /// <summary>
+    ///These collision detectors are just stating if we can get water or turn in crops to the store. Depending on if the "selector" is hitting certain object types.
+    /// </summary>
+    /// <param name="other">The other collider.</param>
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Water")
@@ -102,6 +115,10 @@ public class ToolController : MonoBehaviour {
         
 
     }
+    /// <summary>
+    /// The collider exit event which deselects interaction options.
+    /// </summary>
+    /// <param name="other">The other collision box.</param>
     void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Water") canGetWater = false;

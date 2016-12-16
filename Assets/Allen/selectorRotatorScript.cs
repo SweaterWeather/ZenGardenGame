@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// This script rotates the selector graphic around the player as they move.
+/// </summary>
 public class selectorRotatorScript : MonoBehaviour {
 
     /// <summary>
@@ -8,6 +11,9 @@ public class selectorRotatorScript : MonoBehaviour {
     /// _dir: locallay used dir that is in degrees that states which direction the player should be facing. Is static for use as reference in other classes.
     /// </summary>
     float walkDir;
+    /// <summary>
+    /// The direction you are facing.
+    /// </summary>
     public static float _dir;
 
     // Update is called once per frame

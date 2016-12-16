@@ -111,6 +111,9 @@ public class HeadAnimate : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This update loop contains a large switch statement that switches between different states of animation.
+    /// </summary>
     void Update()
     {
        

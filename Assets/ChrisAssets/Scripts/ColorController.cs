@@ -102,7 +102,7 @@ public class ColorController : MonoBehaviour
     public SetColor body;
 
     /// <summary>
-    /// 
+    /// This start function sets every color to its proper state based off its channel.
     /// </summary>
     void Start () {
         head.Red = redChannelHead;

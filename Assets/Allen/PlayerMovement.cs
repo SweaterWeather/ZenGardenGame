@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// This script controls player movement.
+/// </summary>
 public class PlayerMovement : MonoBehaviour {
 
     /// <summary>

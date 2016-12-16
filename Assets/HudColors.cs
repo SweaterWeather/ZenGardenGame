@@ -506,7 +506,10 @@ public class HudColors : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
-
+    /// <summary>
+    /// This function controls the dropdown menu for the head.
+    /// </summary>
+    /// <param name="drop"></param>
     public void ChangeHead(Dropdown drop)
     {
         HeadAnimate.index = drop.value;

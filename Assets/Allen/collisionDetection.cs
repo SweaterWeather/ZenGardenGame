@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// This script adds collision detection to all the plants in the game.
+/// </summary>
 public class collisionDetection : MonoBehaviour {
 
     //This script was originally intended to just see if the object was selected, it turned into a game mechanic script for the individual tiles. Yay duck tape.
@@ -10,6 +13,9 @@ public class collisionDetection : MonoBehaviour {
         /// _plantVisible: are there plants to render? (has the player planted anything on this tile?)
         /// </summary>
     bool selected = false;
+    /// <summary>
+    /// This bool controls whether or not the plant is rendering.
+    /// </summary>
     public bool _plantVisible = false;
 
     /// <summary>
@@ -90,15 +96,18 @@ public class collisionDetection : MonoBehaviour {
         //logic that determines if the water indicator on this tile is visible.
         if (this.gameObject.transform.GetChild(1).GetComponent<PlantGrowing_Lloyd>().isWater)
         {
-            this.gameObject.transform.GetChild(2).GetComponent<MeshRenderer>().enabled = true;
+            this.gameObject.transform.GetChild(2).GetComponent<SpriteRenderer>().enabled = true;
         } else
         {
-            this.gameObject.transform.GetChild(2).GetComponent<MeshRenderer>().enabled = false;
+            this.gameObject.transform.GetChild(2).GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 
 
-    //This collision script detects if the selector is on this specific tile.
+    /// <summary>
+    /// This collision script detects if the selector is on this specific tile.
+    /// </summary>
+    /// <param name="other"></param>
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Selector")
@@ -112,6 +121,11 @@ public class collisionDetection : MonoBehaviour {
         
 
     }
+
+    /// <summary>
+    /// This function controls the deselection process for the plant.
+    /// </summary>
+    /// <param name="other">The other collider.</param>
     void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Selector")

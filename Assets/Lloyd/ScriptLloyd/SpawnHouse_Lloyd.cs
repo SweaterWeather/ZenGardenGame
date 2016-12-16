@@ -59,7 +59,9 @@ public class SpawnHouse_Lloyd : MonoBehaviour {
         usedLocation = new List<int>();
     }
 	
-	// Update is called once per frame
+	/// <summary>
+    /// This update loop appears to make the house.
+    /// </summary>
 	void Update () {
 
         /* if (Input.GetButton("SpawnBuilding"))
